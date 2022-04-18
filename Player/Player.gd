@@ -4,6 +4,7 @@ var screen_size : Vector2
 var vel : Vector2 = Vector2.ZERO
 
 onready var ball = get_parent().find_node("Ball")
+onready var s_size = get_parent().find_node("ColorRect")
 
 export var spd : int = 500
 export var p_name : String = "none"
@@ -22,19 +23,21 @@ func movement(delta) -> void:
 	#vel = vel.normalized() 
 	move_and_collide(vel * spd * delta)	
 
-func bot_movement(delta) -> void:
-	if abs(ball.position.y - position.y) > 25:
-		if ball.position.y > position.y: vel.y = 1
-		else: vel.y = -1
-	else: vel.y = 0
+func bot_movement() -> void:
+	vel.y = 0
+	if abs(ball.position.x - position.x) < s_size.rect_size.x / 2:
+		if abs(ball.position.y - position.y) > 25:
+			if ball.position.y > position.y: 
+				vel.y = 1
+			else: 
+				vel.y = -1
 	move_and_slide(vel * spd)
 
 func _physics_process(delta):
 	match p_name:
-			"player1":
-				movement(delta)
-			"player2":
-				movement(delta)
-			"bot":
-				bot_movement(delta)
-	
+		"player1":
+			movement(delta)
+		"player2":
+			movement(delta)
+		"bot":
+			bot_movement()
