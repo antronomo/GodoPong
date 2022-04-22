@@ -24,6 +24,7 @@ window/stretch/aspect="keep"
 
 pantalla=false
 window=false
+frames=false
 
 [input]
 

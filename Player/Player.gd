@@ -20,9 +20,9 @@ func bot_movement() -> void:
 	vel.y = 0
 	if abs(ball.position.x - position.x) < s_size.rect_size.x / 2:
 		if abs(ball.position.y - position.y) > 25:
-			if ball.position.y > position.y: 
+			if ball.position.y > position.y:
 				vel.y = 1
-			else: 
+			else:
 				vel.y = -1
 	move_and_slide(vel * spd)
 

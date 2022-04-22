@@ -11,25 +11,52 @@ extents = Vector2( 640, 10 )
 extents = Vector2( 640, 10 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 32, 360 )
+extents = Vector2( 32, 352 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 30.5, 360.031 )
+extents = Vector2( 30.5, 351.969 )
 
 [node name="Arena" type="Node"]
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.0156863, 0, 0.101961, 1 )
 
 [node name="Mitad" type="ColorRect" parent="."]
-margin_left = 632.0
-margin_top = -8.0
-margin_right = 648.0
-margin_bottom = 720.0
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_right = 8.0
 color = Color( 1, 1, 1, 0.498039 )
+
+[node name="Container" type="ItemList" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+margin_bottom = 64.0
+
+[node name="Char1_score" type="Label" parent="Container"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -32.0
+margin_right = -672.0
+margin_bottom = 32.0
+text = "0"
+align = 2
+valign = 1
+
+[node name="Char2_score" type="Label" parent="Container"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 672.0
+margin_top = -32.0
+margin_bottom = 32.0
+text = "0"
+valign = 1
 
 [node name="Wall_top" type="StaticBody2D" parent="."]
 position = Vector2( 640, -10 )
