@@ -3,6 +3,8 @@ extends KinematicBody2D
 var spd : int = 300
 var vel : Vector2 = Vector2.ZERO
 
+signal stop
+
 func _ready() -> void:
 	randomize()
 	vel = initial_direction(randi() % 2)

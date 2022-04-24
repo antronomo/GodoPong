@@ -1,5 +1,8 @@
 extends Node 
 
+var final_score : int = 0
+var winner : String setget set_winner, get_winner
+
 onready var initial_spd : int = $Ball.spd
 onready var initial_pos_char1 : Vector2 = $Char1.position
 onready var initial_pos_char2 : Vector2 = $Char2.position
@@ -9,6 +12,7 @@ var score1 : int = 0
 var score2 : int = 0
 
 func _ready() -> void:
+	if final_score == 0: final_score = 3 
 	$Ball.position = game_size / 2
 
 func _on_Wall_left_body_exited(body:Node) -> void:
@@ -31,11 +35,21 @@ func body_exited(body:Node) -> void:
 		$Char2.position = initial_pos_char2
 		body.position = game_size / 2
 		body.spd = initial_spd
+		check_score()
 	else:
 		body.queue_free()
-	
-	if(score1 == 3 || score2 == 3): #Terminar, se supone que lanza un ganador cuando uno de ellos alcanza el objetivo deseado
-		pass
+
+func check_score() -> void: #Terminar, se supone que lanza un ganador cuando uno de ellos alcanza el objetivo 
+	if(score1 == final_score):
+		set_winner($Char1.c_name)
+	if(score2 == final_score):
+		set_winner($Char2.c_name)
+
+func set_winner(new_winner : String) -> void:
+	winner = new_winner
+
+func get_winner() -> String:
+	return winner
 		
 """
 aplicar puntiaciones por 'gol'
@@ -49,3 +63,7 @@ tabla de puntiaciones con la siguiente mecánica:
 añadir menú:
 		4 botones, uno para jugar, otro para ajustar los jugadores (si van a ser jugadores o bots, color de cada uno y el color de la pelota), otro para desplegar el tutorial (que explica muy básicamente qué es este juego y cómo se juega) y el útimo para ver el Hall 
 """
+
+
+func _on_Ball_stop():
+	pass # Replace with function body.

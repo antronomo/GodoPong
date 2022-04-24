@@ -10,7 +10,7 @@ export var spd : int = 500
 export var c_name : String = "none"
 
 func _ready() -> void:
-	pass
+	if c_name == null: queue_free()
 
 func movement(delta) -> void:
 	vel.y = Input.get_action_strength(c_name + "_down") - Input.get_action_strength(c_name + "_up")
