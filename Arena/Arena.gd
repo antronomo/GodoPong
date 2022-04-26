@@ -1,33 +1,29 @@
 extends Node 
 
-var final_score : int = 0
 var winner : String setget set_winner, get_winner
+var final_score : int = 0
+var score1 : int = 0
+var score2 : int = 0
 
 onready var initial_spd : int = $Ball.spd
 onready var initial_pos_char1 : Vector2 = $Char1.position
 onready var initial_pos_char2 : Vector2 = $Char2.position
 onready var game_size : Vector2 = $ColorRect.rect_size
 
-var score1 : int = 0
-var score2 : int = 0
-
 func _ready() -> void:
-	if final_score == 0: final_score = 3 
+	if final_score == 0: 
+		final_score = 3 
 	$Ball.position = game_size / 2
-
-func _on_Wall_left_body_exited(body:Node) -> void:
-	body_exited(body)
-
-func _on_Wall_right_body_exited(body:Node) -> void:
-	body_exited(body)
+	$Char1.set_can_move(true)
+	$Char2.set_can_move(true)
 
 func body_exited(body:Node) -> void:
 	if body == $Ball:
-		if body.position.x < game_size.x /2:
+		if body.position.x < game_size.x / 2:
 			score2 += 1
 			$Container/Char2_score.text = str(score2)
 			body.initial_direction(1)
-		elif body.position.x > game_size.x /2:
+		elif body.position.x > game_size.x / 2:
 			score1 += 1
 			$Container/Char1_score.text = str(score1)
 			body.initial_direction(0)
@@ -36,20 +32,30 @@ func body_exited(body:Node) -> void:
 		body.position = game_size / 2
 		body.spd = initial_spd
 		check_score()
-	else:
-		body.queue_free()
 
-func check_score() -> void: #Terminar, se supone que lanza un ganador cuando uno de ellos alcanza el objetivo 
+func check_score() -> void:
 	if(score1 == final_score):
 		set_winner($Char1.c_name)
 	if(score2 == final_score):
 		set_winner($Char2.c_name)
+	$Ball.set_can_move(false)
 
 func set_winner(new_winner : String) -> void:
 	winner = new_winner
+	print("The winner is " + new_winner + "!!!")
 
 func get_winner() -> String:
 	return winner
+
+func _process(_delta):
+	if winner == "":
+		if Input.is_action_just_pressed("ball_start"):
+			$Ball.set_can_move(true)
+		if $Char1.c_name == "bot" && $Char1.c_name == $Char2.c_name:
+			$Ball.set_can_move(true)
+	else:
+		$Char1.set_can_move(false)
+		$Char2.set_can_move(false)
 		
 """
 aplicar puntiaciones por 'gol'
@@ -63,7 +69,3 @@ tabla de puntiaciones con la siguiente mecánica:
 añadir menú:
 		4 botones, uno para jugar, otro para ajustar los jugadores (si van a ser jugadores o bots, color de cada uno y el color de la pelota), otro para desplegar el tutorial (que explica muy básicamente qué es este juego y cómo se juega) y el útimo para ver el Hall 
 """
-
-
-func _on_Ball_stop():
-	pass # Replace with function body.

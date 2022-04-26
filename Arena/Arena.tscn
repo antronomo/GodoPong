@@ -110,5 +110,5 @@ shape = SubResource( 4 )
 
 [node name="Position2D" type="Position2D" parent="Wall_left"]
 
-[connection signal="body_exited" from="Wall_right" to="." method="_on_Wall_right_body_exited"]
-[connection signal="body_exited" from="Wall_left" to="." method="_on_Wall_left_body_exited"]
+[connection signal="body_exited" from="Wall_right" to="." method="body_exited"]
+[connection signal="body_exited" from="Wall_left" to="." method="body_exited"]
