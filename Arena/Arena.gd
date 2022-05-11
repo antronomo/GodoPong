@@ -1,9 +1,10 @@
 extends Node 
 
 var winner : String setget set_winner, get_winner
-var final_score : int = 0
 var score1 : int = 0
 var score2 : int = 0
+
+export var final_score : int = 3
 
 onready var initial_spd : int = $Ball.spd
 onready var initial_pos_char1 : Vector2 = $Char1.position
@@ -11,7 +12,7 @@ onready var initial_pos_char2 : Vector2 = $Char2.position
 onready var game_size : Vector2 = $ColorRect.rect_size
 
 func _ready() -> void:
-	if final_score == 0: 
+	if final_score <= 0: 
 		final_score = 3 
 	$Ball.position = game_size / 2
 	$Char1.set_can_move(true)
@@ -47,7 +48,7 @@ func set_winner(new_winner : String) -> void:
 func get_winner() -> String:
 	return winner
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if winner == "":
 		if Input.is_action_just_pressed("ball_start"):
 			$Ball.set_can_move(true)
@@ -58,7 +59,6 @@ func _process(_delta):
 		$Char2.set_can_move(false)
 		
 """
-aplicar puntiaciones por 'gol'
 aplicar efecto de destrucción de la pelota al marcar 'gol'
 aplicar sistema de particulas a la pelota, jugadores, los bordes del campo y en la mitad del mismo
 tabla de puntiaciones con la siguiente mecánica:

@@ -27,13 +27,13 @@ func bot_movement(delta) -> void:
 				vel.y = -1
 	move_and_collide(vel * spd * delta)
 
-func set_can_move(can_i : bool):
-	can_move = can_i
+func set_can_move(may_i : bool) -> void:
+	can_move = may_i
 
 func get_can_move() -> bool:
 	return can_move
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if can_move:
 		match c_name:
 			"player1":

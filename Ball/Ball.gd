@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func movement(delta) -> void:
 	vel = vel.normalized() * spd * delta
-	var collision = move_and_collide(vel)	
+	var collision : KinematicCollision2D = move_and_collide(vel)	
 
 	if collision:
 		vel = vel.bounce(collision.normal)
@@ -22,8 +22,8 @@ func initial_direction(come_from : int) -> Vector2:
 	vel.y = [-0.8, 0.8] [randi() % 2]
 	return vel
 
-func set_can_move(can_i : bool):
-	can_move = can_i
+func set_can_move(may_i : bool) -> void:
+	can_move = may_i
 
 func get_can_move() -> bool:
 	return can_move
