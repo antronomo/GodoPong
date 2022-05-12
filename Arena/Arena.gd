@@ -50,7 +50,7 @@ func get_winner() -> String:
 
 func _process(_delta) -> void:
 	if winner == "":
-		if Input.is_action_just_pressed("ball_start"):
+		if Input.is_action_just_pressed("ui_accept"):
 			$Ball.set_can_move(true)
 		if $Char1.c_name == "bot" && $Char1.c_name == $Char2.c_name:
 			$Ball.set_can_move(true)

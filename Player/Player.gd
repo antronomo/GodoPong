@@ -42,3 +42,4 @@ func _physics_process(delta) -> void:
 				movement(delta)
 			"bot":
 				bot_movement(delta)
+				

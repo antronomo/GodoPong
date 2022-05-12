@@ -82,7 +82,7 @@ c_name = "player1"
 
 [node name="Char2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1216, 352 )
-c_name = "player2"
+c_name = "bot"
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 position = Vector2( -32, -32 )
