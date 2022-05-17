@@ -29,5 +29,5 @@ func get_can_move() -> bool:
 	return can_move
 
 func _physics_process(delta) -> void:
-	if can_move == true:
+	if can_move:
 		movement(delta)

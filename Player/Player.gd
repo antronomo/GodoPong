@@ -13,7 +13,7 @@ var vel : Vector2 = Vector2.ZERO
 func _ready() -> void:
 	if c_name == "": queue_free()
 
-func movement(delta) -> void:
+func player_movement(delta) -> void:
 	vel.y = Input.get_action_strength(c_name + "_down") - Input.get_action_strength(c_name + "_up")
 	move_and_collide(vel * spd * delta)	
 
@@ -37,9 +37,9 @@ func _physics_process(delta) -> void:
 	if can_move:
 		match c_name:
 			"player1":
-				movement(delta)
+				player_movement(delta)
 			"player2":
-				movement(delta)
+				player_movement(delta)
 			"bot":
 				bot_movement(delta)
 				

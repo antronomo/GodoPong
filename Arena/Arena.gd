@@ -18,7 +18,7 @@ func _ready() -> void:
 	$Char1.set_can_move(true)
 	$Char2.set_can_move(true)
 
-func body_exited(body:Node) -> void:
+func body_exited(body : Node) -> void:
 	if body == $Ball:
 		if body.position.x < game_size.x / 2:
 			score2 += 1
@@ -57,7 +57,7 @@ func _process(_delta) -> void:
 	else:
 		$Char1.set_can_move(false)
 		$Char2.set_can_move(false)
-		
+
 """
 aplicar efecto de destrucción de la pelota al marcar 'gol'
 aplicar sistema de particulas a la pelota, jugadores, los bordes del campo y en la mitad del mismo
@@ -67,5 +67,7 @@ tabla de puntiaciones con la siguiente mecánica:
 		la partida SIEMPRE acaba cuando uno de los jugadores llega a X(variable) 'goles' y el ganador se queda con el total de los puntos
 		al final de la partida, puedes grabar en el hall con tus puntos y 3 caracteres (A-Z)
 añadir menú:
-		4 botones, uno para jugar, otro para ajustar los jugadores (si van a ser jugadores o bots, color de cada uno y el color de la pelota), otro para desplegar el tutorial (que explica muy básicamente qué es este juego y cómo se juega) y el útimo para ver el Hall 
+		4 botones, uno para jugar, otro para ajustar los jugadores (si van a ser jugadores o bots, color de cada uno y el color de la
+		pelota), otro para desplegar el tutorial (que explica muy básicamente qué es este juego y cómo se juega) y el útimo para ver el 
+		Hall 
 """
