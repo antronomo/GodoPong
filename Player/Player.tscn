@@ -4,15 +4,14 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24, 112 )
+extents = Vector2( 16, 104 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -4.76837e-07, 0 )
-scale = Vector2( 1, 3.5 )
+scale = Vector2( 0.625, 3.25 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

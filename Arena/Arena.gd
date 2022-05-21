@@ -43,10 +43,23 @@ func check_score() -> void:
 
 func set_winner(new_winner : String) -> void:
 	winner = new_winner
-	print("The winner is " + new_winner + "!!!")
+	game_over()
 
 func get_winner() -> String:
 	return winner
+
+func _input(event):
+	if event .is_action_pressed("ui_cancel"):
+		$PauseMenu.show()
+
+func game_over() -> void: #No se hacer funcionar el "about_to_show()"
+	var whoWin : String = get_winner()
+	$GameOverScreen/CenterContainer/VBoxContainer/WhoIsTheWinner.text = whoWin.to_upper()
+	$GameOverScreen/CenterContainer/VBoxContainer/PrincipalMenu.grab_focus()
+	$GameOverScreen.show()
+
+func _on_PrincipalMenu_pressed():
+	get_tree().change_scene("res://UI/Principal_menu.tscn")
 
 func _process(_delta) -> void:
 	if winner == "":

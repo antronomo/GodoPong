@@ -6,7 +6,7 @@
 [ext_resource path="res://Fonts/OpenSans125.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Fonts/OpenSans25.tres" type="DynamicFont" id=5]
 
-[node name="Menu" type="Control"]
+[node name="PrincipalMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -19,13 +19,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -238.5
+margin_left = -258.0
 margin_top = -170.0
-margin_right = 238.5
+margin_right = 258.0
 margin_bottom = 170.0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
-margin_right = 477.0
+margin_right = 516.0
 margin_bottom = 82.0
 focus_neighbour_top = NodePath("../QuitButton")
 custom_fonts/font = ExtResource( 3 )
@@ -33,7 +33,7 @@ text = "START"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 margin_top = 86.0
-margin_right = 477.0
+margin_right = 516.0
 margin_bottom = 168.0
 custom_fonts/font = ExtResource( 3 )
 disabled = true
@@ -41,7 +41,7 @@ text = "OPTIONS"
 
 [node name="ScoreButton" type="Button" parent="VBoxContainer"]
 margin_top = 172.0
-margin_right = 477.0
+margin_right = 516.0
 margin_bottom = 254.0
 custom_fonts/font = ExtResource( 3 )
 disabled = true
@@ -49,7 +49,7 @@ text = "SCORE BOARD"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 margin_top = 258.0
-margin_right = 477.0
+margin_right = 516.0
 margin_bottom = 340.0
 focus_neighbour_bottom = NodePath("../StartButton")
 custom_fonts/font = ExtResource( 3 )
@@ -113,9 +113,21 @@ margin_bottom = 1.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Version: DEMO 1
+text = "Version: 0.1 DEMO 2
 CREATED BY: ANTRONOMO"
 uppercase = true
+
+[node name="HowToPlay" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 128.0
+margin_right = 303.0
+margin_bottom = 227.0
+text = "HOW TO PLAY:
+Use W and S to navigate between buttons
+and move your character (left one),
+Spacebar to select the button and make the ball move,
+esc to pause in game.
+HaveFun and feedback is apreciated"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
