@@ -52,9 +52,9 @@ func _input(event):
 	if event .is_action_pressed("ui_cancel"):
 		$PauseMenu.show()
 
-func game_over() -> void: #No se hacer funcionar el "about_to_show()"
-	var whoWin : String = get_winner()
-	$GameOverScreen/CenterContainer/VBoxContainer/WhoIsTheWinner.text = whoWin.to_upper()
+#No se hacer funcionar la señal "about_to_show()"
+func game_over() -> void:
+	$GameOverScreen/CenterContainer/VBoxContainer/WhoIsTheWinner.text = get_winner().to_upper()
 	$GameOverScreen/CenterContainer/VBoxContainer/PrincipalMenu.grab_focus()
 	$GameOverScreen.show()
 
