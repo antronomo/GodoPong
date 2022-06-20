@@ -10,14 +10,21 @@ onready var initial_spd : int = $Ball.spd
 onready var initial_pos_char1 : Vector2 = $Char1.position
 onready var initial_pos_char2 : Vector2 = $Char2.position
 onready var game_size : Vector2 = $ColorRect.rect_size
+onready var Option_vars = get_node("/root/OptionMenu")
 
 func _ready() -> void:
 	if final_score <= 0: 
-		final_score = 3 
-	$Ball.position = game_size / 2
-	$Char1.set_can_move(true)
-	$Char2.set_can_move(true)
+		final_score = 3
 
+	$Ball.position = game_size / 2
+
+	$Char1.set_can_move(true)
+	$Char1.set_cName(Option_vars.get_nameChar1())
+
+	$Char2.set_can_move(true)
+	$Char2.set_cName(Option_vars.get_nameChar2())
+
+#Señal 'body_exited' de wall_left y wall_right
 func body_exited(body : Node) -> void:
 	if body == $Ball:
 		if body.position.x < game_size.x / 2:
@@ -28,8 +35,10 @@ func body_exited(body : Node) -> void:
 			score1 += 1
 			$Container/Char1_score.text = str(score1)
 			body.initial_direction(0)
+
 		$Char1.position = initial_pos_char1
 		$Char2.position = initial_pos_char2
+		
 		body.position = game_size / 2
 		body.spd = initial_spd
 		check_score()
@@ -47,10 +56,6 @@ func set_winner(new_winner : String) -> void:
 
 func get_winner() -> String:
 	return winner
-
-func _input(event):
-	if event .is_action_pressed("ui_cancel"):
-		$PauseMenu.show()
 
 #No se hacer funcionar la señal "about_to_show()"
 func game_over() -> void:
@@ -77,8 +82,8 @@ aplicar sistema de particulas a la pelota, jugadores, los bordes del campo y en 
 tabla de puntiaciones con la siguiente mecánica:
 		cada vez que rebote la pelota esa puntuación sube 10pts.
 		cuando alguien mete 'gol' recibe todos esos puntos
-		la partida SIEMPRE acaba cuando uno de los jugadores llega a X(variable) 'goles' y el ganador se queda con el total de los puntos
-		al final de la partida, puedes grabar en el hall con tus puntos y 3 caracteres (A-Z)
+		la partida SIEMPRE acaba cuando uno de los jugadores llega a X(variable) goles y el ganador se queda con el total de los puntos
+		al final de la partida, puedes grabar en el hall o Score Board con tus puntos y 3 caracteres (A-Z y 0-9)
 añadir menú:
 		4 botones, uno para jugar, otro para ajustar los jugadores (si van a ser jugadores o bots, color de cada uno y el color de la
 		pelota), otro para desplegar el tutorial (que explica muy básicamente qué es este juego y cómo se juega) y el útimo para ver el 

@@ -14,6 +14,10 @@ config/name="GodoPong"
 run/main_scene="res://UI/Principal_menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+OptionMenu="*res://UI/Option_menu.gd"
+
 [display]
 
 window/size/width=1280

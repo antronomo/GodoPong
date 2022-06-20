@@ -1,12 +1,14 @@
 extends KinematicBody2D
 
 onready var can_move : bool = false setget set_can_move, get_can_move
+onready var Option_vars = get_node("/root/OptionMenu")
 
 var spd : int = 300
 var vel : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	randomize()
+	# set_color(Ball_color)
 	vel = initial_direction(randi() % 2)
 
 func movement(delta) -> void:
@@ -27,6 +29,10 @@ func set_can_move(may_i : bool) -> void:
 
 func get_can_move() -> bool:
 	return can_move
+
+func set_color(color : Vector3):
+	$Particles2D.modulate(color)
+	pass
 
 func _physics_process(delta) -> void:
 	if can_move:
