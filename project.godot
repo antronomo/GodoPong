@@ -16,7 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-OptionMenu="*res://UI/Option_menu.gd"
+Save="*res://Save/save.gd"
+GlobalSettings="*res://UI/Global_settings.gd"
 
 [display]
 

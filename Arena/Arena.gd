@@ -10,19 +10,37 @@ onready var initial_spd : int = $Ball.spd
 onready var initial_pos_char1 : Vector2 = $Char1.position
 onready var initial_pos_char2 : Vector2 = $Char2.position
 onready var game_size : Vector2 = $ColorRect.rect_size
-onready var Option_vars = get_node("/root/OptionMenu")
+
+#Esto existe para que la consola no de avertencias
+onready var ce : int
 
 func _ready() -> void:
+
+	for i in Save.game_data:
+		print(i)
+		print(Save.game_data[i])
+
+	_on_char1_toggled(Save.game_data["char1_mode"])
+	_on_char2_toggled(Save.game_data["char2_mode"])
+
 	if final_score <= 0: 
 		final_score = 3
 
 	$Ball.position = game_size / 2
 
 	$Char1.set_can_move(true)
-	$Char1.set_cName(Option_vars.get_nameChar1())
+	# $Char1.set_cName("player1")
 
 	$Char2.set_can_move(true)
-	$Char2.set_cName(Option_vars.get_nameChar2())
+	# $Char2.set_cName("bot")
+
+func _on_char1_toggled(value : int) -> void:
+	$Char1.c_name = "player1" if value == 0 else "bot"
+	print("arena char1: ",value)
+	print($Char1.c_name)
+	
+func _on_char2_toggled(value : int) -> void:
+	$Char2.c_name = "player1" if value == 0 else "bot"
 
 #Señal 'body_exited' de wall_left y wall_right
 func body_exited(body : Node) -> void:
@@ -60,19 +78,23 @@ func get_winner() -> String:
 #No se hacer funcionar la señal "about_to_show()"
 func game_over() -> void:
 	$GameOverScreen/CenterContainer/VBoxContainer/WhoIsTheWinner.text = get_winner().to_upper()
-	$GameOverScreen/CenterContainer/VBoxContainer/PrincipalMenu.grab_focus()
+	$GameOverScreen/CenterContainer/VBoxContainer/PrincipalMenuButton.grab_focus()
 	$GameOverScreen.show()
 
 func _on_PrincipalMenu_pressed():
-	get_tree().change_scene("res://UI/Principal_menu.tscn")
+	ce = get_tree().change_scene("res://UI/Principal_menu.tscn")
 
 func _process(_delta) -> void:
 	if winner == "":
+
 		if Input.is_action_just_pressed("ui_accept"):
 			$Ball.set_can_move(true)
+
 		if $Char1.c_name == "bot" && $Char1.c_name == $Char2.c_name:
 			$Ball.set_can_move(true)
+
 	else:
+
 		$Char1.set_can_move(false)
 		$Char2.set_can_move(false)
 

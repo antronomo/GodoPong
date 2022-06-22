@@ -117,6 +117,5 @@ visible = false
 
 [connection signal="body_exited" from="Wall_right" to="." method="body_exited"]
 [connection signal="body_exited" from="Wall_left" to="." method="body_exited"]
-[connection signal="pressed" from="GameOverScreen/CenterContainer/VBoxContainer/PrincipalMenu" to="." method="_on_PrincipalMenu_pressed"]
 
 [editable path="GameOverScreen"]

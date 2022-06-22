@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Principal_menu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/OpenSans40.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Fonts/OpenSans100.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Fonts/OpenSans125.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/Mine-Regular_90_outline.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Fonts/OpenSans25.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/Minecraftia-Regular.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
 
 [node name="PrincipalMenu" type="Control"]
 anchor_right = 1.0
@@ -14,42 +20,45 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -258.0
-margin_top = -170.0
-margin_right = 258.0
-margin_bottom = 170.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-margin_right = 516.0
-margin_bottom = 82.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 330.0
+margin_top = 188.0
+margin_right = 950.0
+margin_bottom = 532.0
+
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 620.0
+margin_bottom = 83.0
 focus_neighbour_top = NodePath("../QuitButton")
 custom_fonts/font = ExtResource( 3 )
 text = "START"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-margin_top = 86.0
-margin_right = 516.0
-margin_bottom = 168.0
+[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 620.0
+margin_bottom = 170.0
 custom_fonts/font = ExtResource( 3 )
-text = "OPTIONS"
+text = "SETTINGS"
 
-[node name="ScoreButton" type="Button" parent="VBoxContainer"]
-margin_top = 172.0
-margin_right = 516.0
-margin_bottom = 254.0
+[node name="ScoreButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 174.0
+margin_right = 620.0
+margin_bottom = 257.0
 custom_fonts/font = ExtResource( 3 )
 disabled = true
-text = "SCORE BOARD"
+text = " SCORE BOARD "
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
-margin_top = 258.0
-margin_right = 516.0
-margin_bottom = 340.0
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 261.0
+margin_right = 620.0
+margin_bottom = 344.0
 focus_neighbour_bottom = NodePath("../StartButton")
 custom_fonts/font = ExtResource( 3 )
 text = "QUIT"
@@ -60,16 +69,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -184.0
-margin_top = -80.0
-margin_right = 193.0
-margin_bottom = 2.99997
+margin_left = -221.0
+margin_top = -76.0
+margin_right = 210.0
+margin_bottom = 6.99994
 rect_rotation = -6.6
 rect_pivot_offset = Vector2( 160, 40 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 0
 custom_fonts/font = ExtResource( 2 )
-text = "COMMING SOON"
+text = "COMMING SOON!"
 align = 1
 valign = 1
 uppercase = true
@@ -79,16 +88,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -184.0
-margin_top = 8.0
-margin_right = 193.0
+margin_left = -216.0
+margin_top = 7.99997
+margin_right = 228.0
 margin_bottom = 91.0
 rect_rotation = -6.6
 rect_pivot_offset = Vector2( 160, 40 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 0
 custom_fonts/font = ExtResource( 2 )
-text = "COMMING SOON"
+text = "COMMING SOON !"
 align = 1
 valign = 1
 uppercase = true
@@ -103,33 +112,38 @@ custom_colors/font_color = Color( 0, 0.647059, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0.231373, 0.231373, 0.231373, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "GodoPong"
+align = 1
+valign = 1
 
 [node name="Creditos" type="Label" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -72.0
-margin_right = 297.0
-margin_bottom = 1.0
+margin_left = 12.0
+margin_top = -79.0
+margin_right = 372.0
+margin_bottom = -6.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
-text = "Version: 0.1 DEMO 2
+text = "Version: 0.2
 CREATED BY: ANTRONOMO"
 uppercase = true
 
 [node name="HowToPlay" type="Label" parent="."]
-margin_left = 24.0
-margin_top = 128.0
-margin_right = 303.0
-margin_bottom = 227.0
+margin_left = 20.0
+margin_top = 113.0
+margin_right = 565.0
+margin_bottom = 272.0
+custom_fonts/font = SubResource( 1 )
 text = "HOW TO PLAY:
-Use W and S to navigate between buttons
-and move your character (left one),
-Spacebar to select the button and make the ball move,
-esc to pause in game.
-HaveFun and feedback is apreciated"
+Use W and S to navigate between buttons,
+Spacebar to select the button,
+ESC to exit  in game,
+more info in Settings.
+HaveFun
+feedback is apreciated"
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/ScoreButton" to="." method="_on_ScoreButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ScoreButton" to="." method="_on_ScoreButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
