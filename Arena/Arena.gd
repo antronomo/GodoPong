@@ -11,17 +11,17 @@ onready var initial_pos_char1 : Vector2 = $Char1.position
 onready var initial_pos_char2 : Vector2 = $Char2.position
 onready var game_size : Vector2 = $ColorRect.rect_size
 
-#Esto existe para que la consola no de avertencias
-onready var ce : int
-
 func _ready() -> void:
 
-	for i in Save.game_data:
-		print(i)
-		print(Save.game_data[i])
+	GlobalSettings.connect("char1_toggled", self, "_on_char1_toggled")
+	GlobalSettings.connect("char2_toggled", self, "_on_char2_toggled")
+	var indice1 = Save.game_data.char1_mode
+	var indice2 = Save.game_data.char2_mode
+	print(indice1)
+	print(indice2)
 
-	_on_char1_toggled(Save.game_data["char1_mode"])
-	_on_char2_toggled(Save.game_data["char2_mode"])
+	_on_char1_toggled(indice1)
+	_on_char2_toggled(indice2)
 
 	if final_score <= 0: 
 		final_score = 3
@@ -29,18 +29,15 @@ func _ready() -> void:
 	$Ball.position = game_size / 2
 
 	$Char1.set_can_move(true)
-	# $Char1.set_cName("player1")
 
 	$Char2.set_can_move(true)
-	# $Char2.set_cName("bot")
 
 func _on_char1_toggled(value : int) -> void:
 	$Char1.c_name = "player1" if value == 0 else "bot"
-	print("arena char1: ",value)
-	print($Char1.c_name)
 	
 func _on_char2_toggled(value : int) -> void:
-	$Char2.c_name = "player1" if value == 0 else "bot"
+	$Char2.c_name = "player2" if value == 0 else "bot"
+	
 
 #Señal 'body_exited' de wall_left y wall_right
 func body_exited(body : Node) -> void:
@@ -77,12 +74,17 @@ func get_winner() -> String:
 
 #No se hacer funcionar la señal "about_to_show()"
 func game_over() -> void:
+	$PauseMenu.queue_free()
 	$GameOverScreen/CenterContainer/VBoxContainer/WhoIsTheWinner.text = get_winner().to_upper()
 	$GameOverScreen/CenterContainer/VBoxContainer/PrincipalMenuButton.grab_focus()
 	$GameOverScreen.show()
 
 func _on_PrincipalMenu_pressed():
-	ce = get_tree().change_scene("res://UI/Principal_menu.tscn")
+	get_tree().change_scene("res://UI/Principal_menu.tscn")
+
+
+func _on_MainMenuButton_pressed():
+	get_tree().change_scene("res://UI/Principal_menu.tscn")
 
 func _process(_delta) -> void:
 	if winner == "":

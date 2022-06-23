@@ -115,7 +115,17 @@ visible = false
 
 [node name="GameOverScreen" parent="." instance=ExtResource( 5 )]
 
+[node name="TheWinnerIs" parent="GameOverScreen/CenterContainer/VBoxContainer" index="0"]
+margin_right = 675.0
+
+[node name="WhoIsTheWinner" parent="GameOverScreen/CenterContainer/VBoxContainer" index="1"]
+margin_right = 675.0
+
+[node name="Control" parent="GameOverScreen/CenterContainer/VBoxContainer" index="2"]
+margin_right = 675.0
+
 [connection signal="body_exited" from="Wall_right" to="." method="body_exited"]
 [connection signal="body_exited" from="Wall_left" to="." method="body_exited"]
+[connection signal="pressed" from="GameOverScreen/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 
 [editable path="GameOverScreen"]

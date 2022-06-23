@@ -36,9 +36,6 @@ func get_can_move() -> bool:
 
 func set_cName(newName) -> void:
 	c_name = newName
-	print("player: ",newName)
-	print(c_name)
-	print(can_move)
 
 # func get_cName() -> String:
 # 	return c_name

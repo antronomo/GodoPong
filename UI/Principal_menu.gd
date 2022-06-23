@@ -1,16 +1,13 @@
 extends Control
 
-#Esto existe para que la consola no de avertencias
-var ce : int
-
 func _ready() -> void:
 	$CenterContainer/VBoxContainer/StartButton.grab_focus()
 
 func _on_StartButton_pressed() -> void:
-	ce = get_tree().change_scene("res://Arena/Arena.tscn")
+	get_tree().change_scene("res://Arena/Arena.tscn")
 		
 func _on_SettingsButton_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://UI/SettingsMenu.tscn")
 
 func _on_ScoreButton_pressed() -> void:
 	pass # Replace with function body.
