@@ -76,7 +76,7 @@ func get_winner() -> String:
 func game_over() -> void:
 	$PauseMenu.queue_free()
 	$GameOverScreen/CenterContainer/VBoxContainer/WhoIsTheWinner.text = get_winner().to_upper()
-	$GameOverScreen/CenterContainer/VBoxContainer/PrincipalMenuButton.grab_focus()
+	$GameOverScreen/CenterContainer/VBoxContainer/MainMenuButton.grab_focus()
 	$GameOverScreen.show()
 
 func _on_PrincipalMenu_pressed():
