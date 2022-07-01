@@ -120,6 +120,7 @@ custom_fonts/font = ExtResource( 4 )
 text = " RETURN "
 
 [node name="MoreInfo" type="Label" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.505882 )
 anchor_left = 0.5
 anchor_top = 0.5

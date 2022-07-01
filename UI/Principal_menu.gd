@@ -6,7 +6,7 @@ func _ready() -> void:
 func _on_StartButton_pressed() -> void:
 	get_tree().change_scene("res://Arena/Arena.tscn")
 		
-func _on_SettingsButton_pressed():
+func _on_SettingsButton_pressed() -> void:
 	get_tree().change_scene("res://UI/SettingsMenu.tscn")
 
 func _on_ScoreButton_pressed() -> void:

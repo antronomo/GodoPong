@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ball/Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Arena/Arena.gd" type="Script" id=3]
 [ext_resource path="res://UI/Pause_menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/GameOver.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/C1Controllers.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/C2Controllers.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/SpaceBar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 10 )
@@ -52,15 +55,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_down"]
 shape = SubResource( 2 )
 
-[node name="Char1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 64, 352 )
-
-[node name="Char2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1216, 352 )
-
-[node name="Ball" parent="." instance=ExtResource( 2 )]
-position = Vector2( -32, -32 )
-
 [node name="Wall_right" type="Area2D" parent="."]
 position = Vector2( -32, 360 )
 __meta__ = {
@@ -83,6 +77,25 @@ position = Vector2( 0, -0.03125 )
 shape = SubResource( 4 )
 
 [node name="Position2D" type="Position2D" parent="Wall_left"]
+
+[node name="C1Controllers" parent="." instance=ExtResource( 6 )]
+position = Vector2( 256, 336 )
+
+[node name="C2Controllers" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1024, 336 )
+
+[node name="SpaceBar" parent="." instance=ExtResource( 8 )]
+position = Vector2( 640, 512 )
+scale = Vector2( 2.93801, 4.13262 )
+
+[node name="Char1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 64, 336 )
+
+[node name="Char2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1216, 336 )
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+position = Vector2( -32, -32 )
 
 [node name="Container" type="ItemList" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -114,15 +127,6 @@ valign = 1
 visible = false
 
 [node name="GameOverScreen" parent="." instance=ExtResource( 5 )]
-
-[node name="TheWinnerIs" parent="GameOverScreen/CenterContainer/VBoxContainer" index="0"]
-margin_right = 675.0
-
-[node name="WhoIsTheWinner" parent="GameOverScreen/CenterContainer/VBoxContainer" index="1"]
-margin_right = 675.0
-
-[node name="Control" parent="GameOverScreen/CenterContainer/VBoxContainer" index="2"]
-margin_right = 675.0
 
 [connection signal="body_exited" from="Wall_right" to="." method="body_exited"]
 [connection signal="body_exited" from="Wall_left" to="." method="body_exited"]

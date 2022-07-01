@@ -9,13 +9,13 @@ func _ready() -> void:
 	char2_mode_btn.select(Save.game_data.char2_mode)
 	char1_mode_btn.grab_focus()
 
-func _on_Char1Mode_item_selected(index : int):
+func _on_Char1Mode_item_selected(index : int) -> void:
 	GlobalSettings.toggle_char1_mode(index)
 
-func _on_Char2Mode_item_selected(index : int):
+func _on_Char2Mode_item_selected(index : int) -> void:
 	GlobalSettings.toggle_char2_mode(index)
 
-func _on_ReturnButton_pressed():
+func _on_ReturnButton_pressed() -> void:
 	exiting()
 
 func _input(event) -> void:

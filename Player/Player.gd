@@ -37,9 +37,6 @@ func get_can_move() -> bool:
 func set_cName(newName) -> void:
 	c_name = newName
 
-# func get_cName() -> String:
-# 	return c_name
-
 func _physics_process(delta) -> void:
 	if can_move:
 		match c_name:

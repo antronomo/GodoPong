@@ -14,8 +14,8 @@ func movement(delta) -> void:
 	var collision : KinematicCollision2D = move_and_collide(vel)	
 
 	if collision:
-		vel = vel.bounce(collision.normal)
 		spd += 10
+		vel = vel.bounce(collision.normal)
 
 func initial_direction(come_from : int) -> Vector2:
 	vel.x = [-1, 1] [come_from]
