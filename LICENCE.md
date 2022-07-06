@@ -1,4 +1,8 @@
+<<<<<<< HEAD
                                Apache License
+=======
+                                 Apache License
+>>>>>>> f84b2e65c0a9d12b48dbdb172ad43045690e3e41
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -186,7 +190,11 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
+<<<<<<< HEAD
    Copyright [2022] [antronomo]
+=======
+   Copyright [yyyy] [name of copyright owner]
+>>>>>>> f84b2e65c0a9d12b48dbdb172ad43045690e3e41
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -198,4 +206,8 @@
    distributed under the License is distributed on an "AS IS" BASIS,
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
+<<<<<<< HEAD
    limitations under the License.
+=======
+   limitations under the License.
+>>>>>>> f84b2e65c0a9d12b48dbdb172ad43045690e3e41
