@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func movement(delta) -> void:
 	vel = vel.normalized() * spd * delta
-	var collision : KinematicCollision2D = move_and_collide(vel)	
+	var collision : KinematicCollision2D = move_and_collide(vel)
 
 	if collision:
 		spd += 10

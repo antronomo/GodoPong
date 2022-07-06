@@ -16,9 +16,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 263.0
+margin_left = 302.0
 margin_top = 235.0
-margin_right = 1016.0
+margin_right = 977.0
 margin_bottom = 484.0
 
 [node name="TheWinnerIs" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -47,4 +47,4 @@ margin_top = 166.0
 margin_right = 753.0
 margin_bottom = 249.0
 custom_fonts/font = ExtResource( 1 )
-text = " PRINCIPAL MENU "
+text = " MAIN MENU "

@@ -9,7 +9,12 @@
 radius = 22.0907
 
 [node name="Ball" type="KinematicBody2D"]
+scale = Vector2( 0.99812, 1 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+color = Color( 1, 1, 1, 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 16

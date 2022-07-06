@@ -86,7 +86,7 @@ position = Vector2( 1024, 336 )
 
 [node name="SpaceBar" parent="." instance=ExtResource( 8 )]
 position = Vector2( 640, 512 )
-scale = Vector2( 2.93801, 4.13262 )
+scale = Vector2( 2.29787, 3.23219 )
 
 [node name="Char1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 64, 336 )
@@ -127,6 +127,18 @@ valign = 1
 visible = false
 
 [node name="GameOverScreen" parent="." instance=ExtResource( 5 )]
+
+[node name="TheWinnerIs" parent="GameOverScreen/CenterContainer/VBoxContainer" index="0"]
+margin_right = 675.0
+
+[node name="WhoIsTheWinner" parent="GameOverScreen/CenterContainer/VBoxContainer" index="1"]
+margin_right = 675.0
+
+[node name="Control" parent="GameOverScreen/CenterContainer/VBoxContainer" index="2"]
+margin_right = 675.0
+
+[node name="MainMenuButton" parent="GameOverScreen/CenterContainer/VBoxContainer" index="3"]
+margin_right = 675.0
 
 [connection signal="body_exited" from="Wall_right" to="." method="body_exited"]
 [connection signal="body_exited" from="Wall_left" to="." method="body_exited"]

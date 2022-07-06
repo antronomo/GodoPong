@@ -21,4 +21,4 @@ func _on_ContinueButton_pressed() -> void:
 
 func _on_ExitButton_pressed() -> void:
 	set_is_paused(false)
-	get_tree().change_scene("res://UI/Principal_menu.tscn")
+	get_tree().change_scene("res://UI/Main_menu.tscn")

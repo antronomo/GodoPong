@@ -11,19 +11,24 @@ onready var initial_pos_char1 : Vector2 = $Char1.position
 onready var initial_pos_char2 : Vector2 = $Char2.position
 onready var game_size : Vector2 = $ColorRect.rect_size	#Creo que hay una variable, algo así como screen_size,
 
+#Para escribir menos
+onready var Sgd = Save.game_data
+
 func _ready() -> void:
 	#Asignar a los personajes si van a ser controlados por jugadores o por el bot
 	# GlobalSettings.connect("char1_toggled", self, "_on_char1_toggled")
-	var indice1 : int  = Save.game_data.char1_mode
+	var indice1 : int  = Sgd.char1_mode
 	_on_char1_toggled(indice1)
 	$Char1.set_can_move(true)
 	$C1Controllers.visible = true if indice1 == 0 else false
+	$Char1.modulate = Sgd.char1_color
 
 	# GlobalSettings.connect("char2_toggled", self, "_on_char2_toggled")
-	var indice2 = Save.game_data.char2_mode
+	var indice2 = Sgd.char2_mode
 	_on_char2_toggled(indice2)
 	$Char2.set_can_move(true)
 	$C2Controllers.visible = true if indice2 == 0 else false
+	$Char2.modulate = Sgd.char2_color
 
 	$SpaceBar.visible = false if indice1 == 1 && indice2 == 1 else true
 
@@ -31,11 +36,14 @@ func _ready() -> void:
 	$PauseMenu.visible = false
 
 	#Score, cambiar más adelante para que se puede configurar desde ajustes
-	if final_score <= 0: 
-		final_score = 3
+	if Sgd.win_condition != 0: 
+		final_score = Sgd.win_condition
+	else: 
+		final_score = -1
 	
 	#Cosas de la pelota
 	$Ball.position = game_size / 2
+	$Ball.modulate = Sgd.ball_color
 
 func _on_char1_toggled(value : int) -> void:
 	$Char1.c_name = "player1" if value == 0 else "bot"
@@ -84,11 +92,8 @@ func game_over() -> void:
 	$GameOverScreen/CenterContainer/VBoxContainer/MainMenuButton.grab_focus()
 	$GameOverScreen.show()
 
-func _on_PrincipalMenu_pressed():
-	get_tree().change_scene("res://UI/Principal_menu.tscn")
-
 func _on_MainMenuButton_pressed():
-	get_tree().change_scene("res://UI/Principal_menu.tscn")
+	get_tree().change_scene("res://UI/Main_menu.tscn")
 
 #Esto es para esconder el "tutorial rápido sobre los controles"
 func _input(event) -> void:

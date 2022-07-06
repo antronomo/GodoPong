@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://UI/Principal_menu.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/OpenSans40.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Fonts/OpenSans100.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/OpenSans25.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/OpenSans100.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/OpenSans40.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Fonts/Mine-Regular_90_outline.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Fonts/OpenSans25.tres" type="DynamicFont" id=5]
+[ext_resource path="res://UI/Main_menu.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/Minecraftia-Regular.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -15,7 +15,7 @@ font_data = ExtResource( 6 )
 [node name="PrincipalMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -37,21 +37,21 @@ margin_bottom = 532.0
 margin_right = 620.0
 margin_bottom = 83.0
 focus_neighbour_top = NodePath("../QuitButton")
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 text = "START"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 87.0
 margin_right = 620.0
 margin_bottom = 170.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 text = "SETTINGS"
 
 [node name="ScoreButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 174.0
 margin_right = 620.0
 margin_bottom = 257.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = " SCORE BOARD "
 
@@ -60,7 +60,7 @@ margin_top = 261.0
 margin_right = 620.0
 margin_bottom = 344.0
 focus_neighbour_bottom = NodePath("../StartButton")
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 text = "QUIT"
 
 [node name="CommingSoon" type="Label" parent="."]
@@ -77,7 +77,7 @@ rect_rotation = -6.6
 rect_pivot_offset = Vector2( 160, 40 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "COMMING SOON!"
 align = 1
 valign = 1
@@ -96,7 +96,7 @@ rect_rotation = -6.6
 rect_pivot_offset = Vector2( 160, 40 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
 text = "COMMING SOON !"
 align = 1
 valign = 1
@@ -124,8 +124,8 @@ margin_right = 372.0
 margin_bottom = -6.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "Version: 0.2.2
+custom_fonts/font = ExtResource( 1 )
+text = "Version: 0.2.3
 CREATED BY: ANTRONOMO"
 uppercase = true
 
@@ -138,8 +138,8 @@ custom_fonts/font = SubResource( 1 )
 text = "HOW TO PLAY:
 Use W and S to navigate between buttons,
 Spacebar to select the button,
-ESC to exit  in game,
-HaveFun!!
+ESC to exit,
+HAVE FUN!!
 feedback is apreciated"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
