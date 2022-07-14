@@ -1,15 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Ball/Ball.gd" type="Script" id=1]
 [ext_resource path="res://recursos/ball1.png" type="Texture" id=2]
 [ext_resource path="res://Ball/Ball.tres" type="Material" id=3]
 [ext_resource path="res://recursos/ball2.png" type="Texture" id=4]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 22.0907
-
 [node name="Ball" type="KinematicBody2D"]
-scale = Vector2( 0.99812, 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -22,10 +18,10 @@ local_coords = false
 process_material = ExtResource( 3 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -8.01507, -32, 8.01507, -32, 24.0452, -24, 32.0603, -8, 32.0603, 8, 24.0452, 24, 8.01507, 32, -8.01507, 32, -24.0452, 24, -32.0603, 8, -32.0603, -8, -24.0452, -24 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2.38419e-07, 0 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( -9.53674e-07, -9.53674e-07 )
+scale = Vector2( 1.92362, 1.92 )
 texture = ExtResource( 4 )

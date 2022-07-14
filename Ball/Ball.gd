@@ -10,16 +10,23 @@ func _ready() -> void:
 	vel = initial_direction(randi() % 2)
 
 func movement(delta) -> void:
-	vel = vel.normalized() * spd * delta
 	var collision : KinematicCollision2D = move_and_collide(vel)
-
+	
 	if collision:
 		spd += 10
 		vel = vel.bounce(collision.normal)
 
+		if abs(vel.x) <= abs(vel.y * 0.15): 
+			vel.x *= 2.5 * sign(vel.x)
+
+		if abs(vel.y) <= abs(vel.x * 0.15): 
+			vel.y *= 2.5 * sign(vel.y)
+
+	vel = vel.normalized() * spd * delta
+
 func initial_direction(come_from : int) -> Vector2:
 	vel.x = [-1, 1] [come_from]
-	vel.y = [-0.8, 0.8] [randi() % 2]
+	vel.y = 0.8 * [-1, 1] [randi() % 2]
 	return vel
 
 func set_can_move(may_i : bool) -> void:

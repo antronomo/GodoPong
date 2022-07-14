@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ball/Ball.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://UI/C1Controllers.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/C2Controllers.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/SpaceBar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://recursos/Border.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/OpenSans25.tres" type="DynamicFont" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 10 )
@@ -27,7 +29,7 @@ script = ExtResource( 3 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.0156863, 0, 0.101961, 1 )
+color = Color( 0.0784314, 0.0784314, 0.0823529, 1 )
 
 [node name="Mitad" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -36,6 +38,17 @@ anchor_bottom = 1.0
 margin_left = -8.0
 margin_right = 8.0
 color = Color( 1, 1, 1, 0.498039 )
+
+[node name="BorderLeft" type="Sprite" parent="."]
+position = Vector2( 616, 360 )
+scale = Vector2( 1.05, 1.17778 )
+texture = ExtResource( 9 )
+
+[node name="BorderRight" type="Sprite" parent="."]
+position = Vector2( 664, 360 )
+scale = Vector2( 1.05, 1.17778 )
+texture = ExtResource( 9 )
+flip_h = true
 
 [node name="Wall_top" type="StaticBody2D" parent="."]
 position = Vector2( 640, -10 )
@@ -95,7 +108,7 @@ position = Vector2( 64, 336 )
 position = Vector2( 1216, 336 )
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
-position = Vector2( -32, -32 )
+position = Vector2( -64, -64 )
 
 [node name="Container" type="ItemList" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -109,6 +122,7 @@ anchor_bottom = 0.5
 margin_top = -32.0
 margin_right = -672.0
 margin_bottom = 32.0
+custom_fonts/font = ExtResource( 10 )
 text = "0"
 align = 2
 valign = 1
@@ -120,6 +134,7 @@ anchor_bottom = 0.5
 margin_left = 672.0
 margin_top = -32.0
 margin_bottom = 32.0
+custom_fonts/font = ExtResource( 10 )
 text = "0"
 valign = 1
 

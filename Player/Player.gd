@@ -19,7 +19,7 @@ func player_movement(delta) -> void:
 
 func bot_movement(delta) -> void:
 	vel.y = 0
-	if abs(ball.position.x - position.x) < s_size.rect_size.x / 2:
+	if abs(ball.position.x - position.x) < s_size.rect_size.x / 2: #Si la pelota está en su mitad del campo
 		if abs(ball.position.y - position.y) > 25:
 			if ball.position.y > position.y:
 				vel.y = 1

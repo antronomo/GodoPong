@@ -4,7 +4,7 @@ var winner : String setget set_winner, get_winner
 var score1 : int = 0
 var score2 : int = 0
 
-export var final_score : int = 3
+export var final_score : int
 
 onready var initial_spd : int = $Ball.spd
 onready var initial_pos_char1 : Vector2 = $Char1.position
@@ -22,6 +22,7 @@ func _ready() -> void:
 	$Char1.set_can_move(true)
 	$C1Controllers.visible = true if indice1 == 0 else false
 	$Char1.modulate = Sgd.char1_color
+	$BorderLeft.modulate = Sgd.char1_color
 
 	# GlobalSettings.connect("char2_toggled", self, "_on_char2_toggled")
 	var indice2 = Sgd.char2_mode
@@ -29,6 +30,7 @@ func _ready() -> void:
 	$Char2.set_can_move(true)
 	$C2Controllers.visible = true if indice2 == 0 else false
 	$Char2.modulate = Sgd.char2_color
+	$BorderRight.modulate = Sgd.char2_color
 
 	$SpaceBar.visible = false if indice1 == 1 && indice2 == 1 else true
 
@@ -87,8 +89,11 @@ func get_winner() -> String:
 
 #No se hacer funcionar la señal "about_to_show()"
 func game_over() -> void:
+	var GCVW = $GameOverScreen/CenterContainer/VBoxContainer/WhoIsTheWinner
+
 	$PauseMenu.queue_free()
-	$GameOverScreen/CenterContainer/VBoxContainer/WhoIsTheWinner.text = get_winner().to_upper()
+	GCVW.text = get_winner().to_upper()
+	GCVW.modulate = Sgd.char1_color if score1 > score2 else Sgd.char2_color
 	$GameOverScreen/CenterContainer/VBoxContainer/MainMenuButton.grab_focus()
 	$GameOverScreen.show()
 
@@ -113,6 +118,10 @@ func _process(_delta) -> void:
 
 		if $Char1.c_name == "bot" && $Char1.c_name == $Char2.c_name:
 			$Ball.set_can_move(true)
+
+		#Si la pelota coge demasiada velocidad, puede empujar los personajes
+		$Char1.position.x = initial_pos_char1.x
+		$Char2.position.x = initial_pos_char2.x
 
 	else:
 		$Char1.set_can_move(false)
