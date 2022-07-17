@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Fonts/OpenSans100.tres" type="DynamicFont" id=1]
 
-[node name="GameOverScreen" type="Popup"]
+[node name="GameOverScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -22,7 +22,7 @@ margin_right = 977.0
 margin_bottom = 484.0
 
 [node name="TheWinnerIs" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 753.0
+margin_right = 675.0
 margin_bottom = 77.0
 custom_fonts/font = ExtResource( 1 )
 text = "THE WINNER IS..."
@@ -31,20 +31,21 @@ valign = 1
 
 [node name="WhoIsTheWinner" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 81.0
-margin_right = 753.0
+margin_right = 675.0
 margin_bottom = 158.0
 custom_fonts/font = ExtResource( 1 )
+text = "-"
 align = 1
 valign = 1
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
 margin_top = 162.0
-margin_right = 753.0
+margin_right = 675.0
 margin_bottom = 162.0
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 166.0
-margin_right = 753.0
+margin_right = 675.0
 margin_bottom = 249.0
 custom_fonts/font = ExtResource( 1 )
 text = " MAIN MENU "

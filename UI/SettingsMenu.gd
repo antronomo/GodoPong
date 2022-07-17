@@ -38,7 +38,7 @@ func _ready() -> void:
 
 # CHARACTER 1----------------------------------------------------------
 func _on_Char1Mode_item_selected(index : int) -> void:
-	GlobalSettings.toggle_char1_mode(index)
+	Sgd.char1_mode = index
 
 func _on_Char1Color_pressed() -> void:
 	char1_color_popup.show()
@@ -49,7 +49,7 @@ func _on_Char1ColorPicker_color_changed(color_picked : Color) -> void:
 
 # CHARACTER 2-----------------------------------------------------------
 func _on_Char2Mode_item_selected(index : int) -> void:
-	GlobalSettings.toggle_char2_mode(index)
+	Sgd.char2_mode = index
 
 func _on_Char2Color_pressed() -> void:
 	char2_color_popup.show()
@@ -85,8 +85,6 @@ func _input(event) -> void:
 		hidder_picker(true)
 
 func exiting() -> void:
-	Sgd.char1_mode = char1_mode_but.selected
-	Sgd.char2_mode = char2_mode_but.selected
 	Save.save_data()
 	get_tree().change_scene("res://UI/Main_menu.tscn")
 

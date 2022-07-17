@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var ball = get_parent().find_node("Ball")
 onready var s_size = get_parent().find_node("ColorRect")
+#si "can_move" está habilitado por defecto, dará errores fuera de "arena"
 onready var can_move : bool = false setget set_can_move, get_can_move
 
 export var spd : int = 500
@@ -46,4 +47,3 @@ func _physics_process(delta) -> void:
 				player_movement(delta)
 			"bot":
 				bot_movement(delta)
-				

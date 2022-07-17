@@ -17,7 +17,6 @@ config/icon="res://icon.png"
 [autoload]
 
 Save="*res://Save/save.gd"
-GlobalSettings="*res://UI/Global_settings.gd"
 
 [display]
 

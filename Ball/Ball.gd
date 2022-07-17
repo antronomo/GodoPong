@@ -4,25 +4,29 @@ onready var can_move : bool = false setget set_can_move, get_can_move
 
 var spd : int = 300
 var vel : Vector2 = Vector2.ZERO
+var collision : KinematicCollision2D
+
+export var difenecial : float = 0.05
+export var multiplicador : float = 8
 
 func _ready() -> void:
 	randomize()
 	vel = initial_direction(randi() % 2)
 
 func movement(delta) -> void:
-	var collision : KinematicCollision2D = move_and_collide(vel)
-	
 	if collision:
 		spd += 10
 		vel = vel.bounce(collision.normal)
 
-		if abs(vel.x) <= abs(vel.y * 0.15): 
-			vel.x *= 2.5 * sign(vel.x)
+		if abs(vel.x) <= abs(vel.y * difenecial): 
+			vel.x *= multiplicador * sign(vel.x) if vel.x != 0.0 else 1.0
 
-		if abs(vel.y) <= abs(vel.x * 0.15): 
-			vel.y *= 2.5 * sign(vel.y)
+		if abs(vel.y) <= abs(vel.x * difenecial): 
+			vel.y *= multiplicador * sign(vel.y) if vel.y != 0.0 else 1.0
 
 	vel = vel.normalized() * spd * delta
+
+	collision = move_and_collide(vel)
 
 func initial_direction(come_from : int) -> Vector2:
 	vel.x = [-1, 1] [come_from]

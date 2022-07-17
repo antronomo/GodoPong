@@ -102,10 +102,10 @@ margin_right = 1468.0
 margin_bottom = 420.0
 
 [node name="Char1ColorPicker" type="ColorPicker" parent="GridContainer/Character1Color/Popup"]
-margin_left = -300.0
-margin_top = 8.0
-margin_right = 8.0
-margin_bottom = 420.0
+margin_left = -296.0
+margin_top = 12.0
+margin_right = 12.0
+margin_bottom = 424.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
@@ -179,10 +179,10 @@ margin_right = 1468.0
 margin_bottom = 420.0
 
 [node name="Char2ColorPicker" type="ColorPicker" parent="GridContainer/Character2Color/Popup"]
-margin_left = -300.0
-margin_top = 8.0
-margin_right = 8.0
-margin_bottom = 420.0
+margin_left = -296.0
+margin_top = 12.0
+margin_right = 12.0
+margin_bottom = 424.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
@@ -232,10 +232,10 @@ margin_right = 1468.0
 margin_bottom = 470.0
 
 [node name="BallColorPicker" type="ColorPicker" parent="GridContainer/BallColor/Popup"]
-margin_left = -300.0
-margin_top = 8.0
-margin_right = 8.0
-margin_bottom = 420.0
+margin_left = -296.0
+margin_top = 12.0
+margin_right = 12.0
+margin_bottom = 424.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false

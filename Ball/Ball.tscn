@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Ball/Ball.gd" type="Script" id=1]
 [ext_resource path="res://recursos/ball1.png" type="Texture" id=2]
 [ext_resource path="res://Ball/Ball.tres" type="Material" id=3]
 [ext_resource path="res://recursos/ball2.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 24.0
 
 [node name="Ball" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -12,14 +15,21 @@ __meta__ = {
 }
 
 [node name="Particles2D" type="Particles2D" parent="."]
-amount = 16
-lifetime = 0.1
+amount = 24
+lifetime = 0.15
 local_coords = false
 process_material = ExtResource( 3 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+visible = false
+scale = Vector2( 0.75, 0.75 )
 polygon = PoolVector2Array( -8.01507, -32, 8.01507, -32, 24.0452, -24, 32.0603, -8, 32.0603, 8, 24.0452, 24, 8.01507, 32, -8.01507, 32, -24.0452, 24, -32.0603, 8, -32.0603, -8, -24.0452, -24 )
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( -5.68434e-14, -5.68434e-14 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -9.53674e-07, -9.53674e-07 )

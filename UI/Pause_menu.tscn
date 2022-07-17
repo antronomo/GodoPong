@@ -1,13 +1,97 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/OpenSans100.tres" type="DynamicFont" id=2]
 
+[sub_resource type="Animation" id=4]
+resource_name = "IDLE"
+
+[sub_resource type="Animation" id=1]
+resource_name = "PauseIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 320, -512 ), Vector2( 320, 136 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "le_pausar"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "PauseOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 320, 136 ), Vector2( 320, -512 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "le_pausar"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 320, -512 ) ]
+}
+
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_left = 320.0
+margin_top = -512.0
+margin_right = 960.0
+margin_bottom = -63.9999
+rect_pivot_offset = Vector2( 320, 224 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -19,10 +103,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 402.0
-margin_top = 208.0
-margin_right = 877.0
-margin_bottom = 511.0
+margin_left = 82.0
+margin_top = 72.0
+margin_right = 557.0
+margin_bottom = 375.0
 custom_constants/separation = 20
 
 [node name="Pause" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -55,6 +139,13 @@ focus_next = NodePath("../ContinueButton")
 focus_previous = NodePath("../ContinueButton")
 custom_fonts/font = ExtResource( 2 )
 text = "EXIT"
+
+[node name="PauseAnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "IDLE"
+anims/IDLE = SubResource( 4 )
+anims/PauseIn = SubResource( 1 )
+anims/PauseOut = SubResource( 3 )
+anims/RESET = SubResource( 2 )
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
