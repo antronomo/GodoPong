@@ -1,26 +1,31 @@
 extends Control
 
-#Character mode
+# Character mode
 onready var char1_mode_but = $GridContainer/Character1/Char1Mode
 onready var char2_mode_but = $GridContainer/Character2/Char2Mode
 onready var win_ocn_but = $GridContainer/WinCondition/GoalsToWin
 
-#atajos para el ColorPicker
+# Atajos para el ColorPicker
 onready var char1_color_picker = $GridContainer/Character1Color/Popup/Char1ColorPicker
 onready var char2_color_picker = $GridContainer/Character2Color/Popup/Char2ColorPicker
 onready var ball_color_picker = $GridContainer/BallColor/Popup/BallColorPicker
 
-#atajos para el PopUp
+# Atajos para el PopUp
 onready var char1_color_popup = $GridContainer/Character1Color/Popup
 onready var char2_color_popup = $GridContainer/Character2Color/Popup
 onready var ball_color_popup = $GridContainer/BallColor/Popup
 
-#atajo para el ColorRect
+# Atajos para el ColorRect
 onready var char1_color_cr = $GridContainer/Character1Color/ColorRect
 onready var char2_color_cr = $GridContainer/Character2Color/ColorRect
 onready var ball_color_cr = $GridContainer/BallColor/ColorRect
 
-#Para escribir menos
+# Atajos para los color_buttons
+onready var char1_color_button = $GridContainer/Character1Color/Char1Color
+onready var char2_color_button = $GridContainer/Character2Color/Char2Color
+onready var ball_color_button = $GridContainer/BallColor/BallColorBut
+
+# Para escribir menos
 onready var Sgd = Save.game_data
 onready var win_con = $GridContainer/WinCondition/GoalsToWin
 
@@ -76,27 +81,29 @@ func _on_GoalsToWin_item_selected(index : int) -> void:
 	Sgd.win_condition = index
 	
 #------------------------------------------------------------------------
-
 func _on_ReturnButton_pressed() -> void:
 	exiting()
 
 func _input(event) -> void:
 	if event.is_action_pressed("ui_cancel"):
+		if !char1_color_popup.is_visible_in_tree() && !char2_color_popup.is_visible_in_tree() && !ball_color_popup.is_visible_in_tree():
+			exiting()
+		
 		hidder_picker(true)
 
 func exiting() -> void:
 	Save.save_data()
 	get_tree().change_scene("res://UI/Main_menu.tscn")
 
-#Su función es esconder los colorpickers si su botón pierde "focus"
+# Su función es esconder los colorpickers si su botón pierde "focus"
 func hidder_picker(value : bool) -> void:
-	if $GridContainer/Character1Color/Char1Color.has_focus() == value:
+	if char1_color_button.has_focus() == value:
 		char1_color_popup.hide()
 
-	if $GridContainer/Character2Color/Char2Color.has_focus() == value:
+	if char2_color_button.has_focus() == value:
 		char2_color_popup.hide()
 		
-	if $GridContainer/BallColor/BallColorBut.has_focus() == value:
+	if ball_color_button.has_focus() == value:
 		ball_color_popup.hide()
 
 func _process(_delta) -> void:

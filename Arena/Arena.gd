@@ -4,8 +4,7 @@ var winner : String setget set_winner, get_winner
 var score1 : int = 0
 var score2 : int = 0
 var color_winner : Color
-
-export var final_score : int
+var final_score : int
 
 onready var initial_spd : int = $Ball.spd
 onready var initial_pos_char1 : Vector2 = $Char1.position
@@ -14,51 +13,43 @@ onready var game_size : Vector2 = $ColorRect.rect_size
 onready var score_anim = $Container/AnimationPlayer
 onready var ui_anim = $UI_AnimationPlayer
 
-#Para escribir menos
+# Para escribir menos
 onready var Sgd = Save.game_data
 onready var GCVW = $GameOverScreen/CenterContainer/VBoxContainer/WhoIsTheWinner
 
 func _ready() -> void:
-	#Asignar a los personajes si van a ser controlados por jugadores o por el bot
-	#Char1
+	# Char1
 	var indice1 : int  = Sgd.char1_mode
-	_on_char1_toggled(indice1)
+	$Char1.c_name = "player1" if indice1 == 0 else "bot"
 	$Char1.set_can_move(true)
 	$C1Controllers.visible = true if indice1 == 0 else false
 	$Char1.modulate = Sgd.char1_color
 	$BorderLeft.modulate = Sgd.char1_color
 
-	#Char2
+	# Char2
 	var indice2 = Sgd.char2_mode
-	_on_char2_toggled(indice2)
+	$Char2.c_name = "player2" if indice2 == 0 else "bot"
 	$Char2.set_can_move(true)
 	$C2Controllers.visible = true if indice2 == 0 else false
 	$Char2.modulate = Sgd.char2_color
 	$BorderRight.modulate = Sgd.char2_color
 
-	$SpaceBar.visible = false if indice1 == 1 && indice2 == 1 else true
-
-	#Score
-	#con el "win condition" en negativo, la partida jamás acabará por muchos goles que char 1 o 2 meta
+	# Score
+	# con el "win condition" en negativo, la partida jamás acabará por muchos goles que char 1 o 2 meta
 	if Sgd.win_condition != 0: 
 		final_score = Sgd.win_condition
 	else: 
 		final_score = -1
 	
-	#Ball
+	# sBall
 	$Ball.position = game_size / 2
 	$Ball.modulate = Sgd.ball_color
-
+	$SpaceBar.visible = false if indice1 == 1 && indice2 == 1 else true
+	
 	# GameOverScreen
 	$GameOverScreen.visible = false
 
-func _on_char1_toggled(value : int) -> void:
-	$Char1.c_name = "player1" if value == 0 else "bot"
-	
-func _on_char2_toggled(value : int) -> void:
-	$Char2.c_name = "player2" if value == 0 else "bot"
-
-#Señal 'body_exited' de wall_left y wall_right
+# Señal 'body_exited' de wall_left y wall_right
 func body_exited(body : Node) -> void:
 	if body == $Ball:
 		if body.position.x < game_size.x / 2:
@@ -109,7 +100,7 @@ func game_over() -> void:
 func _on_MainMenuButton_pressed():
 	get_tree().change_scene("res://UI/Main_menu.tscn")
 
-#Esto es para esconder el "tutorial rápido sobre los controles"
+# Esto es para esconder el "tutorial rápido sobre los controles"
 func _input(event) -> void:
 	if event.is_action_pressed("player1_up") || event.is_action_pressed("player1_down"):
 		$C1Controllers.visible = false
@@ -131,7 +122,7 @@ func _process(_delta) -> void:
 		if $Char1.c_name == "bot" && $Char1.c_name == $Char2.c_name:
 			$Ball.set_can_move(true)
 
-		#Si la pelota coge demasiada velocidad, puede empujar los personajes
+		# Si la pelota coge demasiada velocidad, puede empujar los personajes
 		$Char1.position.x = initial_pos_char1.x
 		$Char2.position.x = initial_pos_char2.x
 

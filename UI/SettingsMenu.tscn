@@ -38,9 +38,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 64.0
-margin_top = 152.0
+margin_top = 144.0
 margin_right = -64.0
-margin_bottom = -64.0
+margin_bottom = -72.0
 focus_neighbour_top = NodePath("../ReturnButton")
 
 [node name="Character1" type="HBoxContainer" parent="GridContainer"]
@@ -70,29 +70,28 @@ selected = 0
 [node name="Character1Color" type="HBoxContainer" parent="GridContainer"]
 margin_top = 45.0
 margin_right = 1152.0
-margin_bottom = 118.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="GridContainer/Character1Color"]
 margin_right = 475.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 3 )
-text = "CHARACTER 1 COLOR
-"
+text = "CHARACTER 1 COLOR"
 valign = 1
 
 [node name="ColorRect" type="ColorRect" parent="GridContainer/Character1Color"]
 margin_left = 479.0
 margin_right = 954.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 
 [node name="Char1Color" type="Button" parent="GridContainer/Character1Color"]
 margin_left = 958.0
 margin_right = 1152.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 custom_fonts/font = ExtResource( 3 )
 text = " PICK COLOR "
 
@@ -102,28 +101,29 @@ margin_right = 1468.0
 margin_bottom = 420.0
 
 [node name="Char1ColorPicker" type="ColorPicker" parent="GridContainer/Character1Color/Popup"]
-margin_left = -296.0
-margin_top = 12.0
-margin_right = 12.0
-margin_bottom = 424.0
+margin_left = -292.0
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 428.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
 
 [node name="-SEPARADOR-" type="HBoxContainer" parent="GridContainer"]
-margin_top = 122.0
+margin_top = 90.0
 margin_right = 1152.0
-margin_bottom = 122.0
+margin_bottom = 138.0
 
-[node name="-SEPARADOR-2" type="HBoxContainer" parent="GridContainer"]
-margin_top = 126.0
-margin_right = 1152.0
-margin_bottom = 126.0
+[node name="Label" type="Label" parent="GridContainer/-SEPARADOR-"]
+margin_bottom = 48.0
+text = "
+
+"
 
 [node name="Character2" type="HBoxContainer" parent="GridContainer"]
-margin_top = 130.0
+margin_top = 142.0
 margin_right = 1152.0
-margin_bottom = 171.0
+margin_bottom = 183.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="GridContainer/Character2"]
@@ -145,31 +145,30 @@ items = [ " PLAYER ", null, false, 0, null, " BOT ", null, false, 1, null ]
 selected = 1
 
 [node name="Character2Color" type="HBoxContainer" parent="GridContainer"]
-margin_top = 175.0
+margin_top = 187.0
 margin_right = 1152.0
-margin_bottom = 248.0
+margin_bottom = 228.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="GridContainer/Character2Color"]
 margin_right = 475.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 3 )
-text = "CHARACTER 1 COLOR
-"
+text = "CHARACTER 1 COLOR"
 valign = 1
 
 [node name="ColorRect" type="ColorRect" parent="GridContainer/Character2Color"]
 margin_left = 479.0
 margin_right = 954.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 
 [node name="Char2Color" type="Button" parent="GridContainer/Character2Color"]
 margin_left = 958.0
 margin_right = 1152.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 custom_fonts/font = ExtResource( 3 )
 text = " PICK COLOR "
 
@@ -179,50 +178,50 @@ margin_right = 1468.0
 margin_bottom = 420.0
 
 [node name="Char2ColorPicker" type="ColorPicker" parent="GridContainer/Character2Color/Popup"]
-margin_left = -296.0
-margin_top = 12.0
-margin_right = 12.0
-margin_bottom = 424.0
+margin_left = -292.0
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 428.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
 
-[node name="-SEPARADOR-3" type="HBoxContainer" parent="GridContainer"]
-margin_top = 252.0
+[node name="-SEPARADOR-2" type="HBoxContainer" parent="GridContainer"]
+margin_top = 232.0
 margin_right = 1152.0
-margin_bottom = 252.0
+margin_bottom = 280.0
 
-[node name="-SEPARADOR-4" type="HBoxContainer" parent="GridContainer"]
-margin_top = 256.0
-margin_right = 1152.0
-margin_bottom = 256.0
+[node name="Label" type="Label" parent="GridContainer/-SEPARADOR-2"]
+margin_bottom = 48.0
+text = "
+
+"
 
 [node name="BallColor" type="HBoxContainer" parent="GridContainer"]
-margin_top = 260.0
+margin_top = 284.0
 margin_right = 1152.0
-margin_bottom = 333.0
+margin_bottom = 325.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="GridContainer/BallColor"]
 margin_right = 475.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 3 )
-text = " BALL COLOR 
-"
+text = " BALL COLOR "
 valign = 1
 
 [node name="ColorRect" type="ColorRect" parent="GridContainer/BallColor"]
 margin_left = 479.0
 margin_right = 954.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 
 [node name="BallColorBut" type="Button" parent="GridContainer/BallColor"]
 margin_left = 958.0
 margin_right = 1152.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 custom_fonts/font = ExtResource( 3 )
 text = " PICK COLOR "
 
@@ -232,43 +231,44 @@ margin_right = 1468.0
 margin_bottom = 470.0
 
 [node name="BallColorPicker" type="ColorPicker" parent="GridContainer/BallColor/Popup"]
-margin_left = -296.0
-margin_top = 12.0
-margin_right = 12.0
-margin_bottom = 424.0
+margin_left = -292.0
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 428.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
 
-[node name="-SEPARADOR-5" type="HBoxContainer" parent="GridContainer"]
-margin_top = 337.0
+[node name="-SEPARADOR-3" type="HBoxContainer" parent="GridContainer"]
+margin_top = 329.0
 margin_right = 1152.0
-margin_bottom = 337.0
+margin_bottom = 377.0
 
-[node name="-SEPARADOR-6" type="HBoxContainer" parent="GridContainer"]
-margin_top = 341.0
-margin_right = 1152.0
-margin_bottom = 341.0
+[node name="Label" type="Label" parent="GridContainer/-SEPARADOR-3"]
+margin_bottom = 48.0
+text = "
+
+"
 
 [node name="WinCondition" type="HBoxContainer" parent="GridContainer"]
-margin_top = 345.0
+margin_top = 381.0
 margin_right = 1152.0
-margin_bottom = 418.0
+margin_bottom = 422.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="GridContainer/WinCondition"]
+margin_top = 3.0
 margin_right = 987.0
-margin_bottom = 73.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 3 )
-text = "WIN CONDITION
-"
+text = "WIN CONDITION"
 valign = 1
 
 [node name="GoalsToWin" type="OptionButton" parent="GridContainer/WinCondition"]
 margin_left = 991.0
 margin_right = 1152.0
-margin_bottom = 73.0
+margin_bottom = 41.0
 focus_neighbour_bottom = NodePath("../../../ReturnButton")
 custom_fonts/font = ExtResource( 3 )
 text = " 3 GOALS "

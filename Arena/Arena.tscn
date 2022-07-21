@@ -365,6 +365,7 @@ anims/RESET = SubResource( 8 )
 [node name="PauseMenu" parent="." instance=ExtResource( 4 )]
 
 [node name="GameOverScreen" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [node name="WhoIsTheWinner" parent="GameOverScreen/CenterContainer/VBoxContainer" index="1"]
 modulate = Color( 1, 1, 1, 0 )

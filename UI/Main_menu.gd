@@ -17,7 +17,5 @@ func _on_QuitButton_pressed() -> void:
 
 func _input(event) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-
-
-
+		if $CenterContainer/VBoxContainer/QuitButton.disabled == false:
+			get_tree().quit()
