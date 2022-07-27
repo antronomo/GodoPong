@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://recursos/Fonts/MineRegular16_White.tres" type="DynamicFont" id=1]
+
+[node name="HowToPlay" type="Label"]
+margin_left = 20.0
+margin_top = 113.0
+margin_right = 565.0
+margin_bottom = 272.0
+custom_fonts/font = ExtResource( 1 )
+text = "IN MENUs:
+Use W and S to navigate between buttons,
+Spacebar to select the button,
+ESC to exit,
+you may need the mouse too
+
+IN GAME:
+W and S to control char1(left),
+UP and DOWN to control char2(right),
+SpaceBar to make the ball move,
+ESC to pause the game.
+
+HAVE FUN!!
+feedback is apreciated"

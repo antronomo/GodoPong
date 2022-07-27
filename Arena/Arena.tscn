@@ -9,13 +9,13 @@
 [ext_resource path="res://UI/C2Controllers.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/SpaceBar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://recursos/Border.png" type="Texture" id=9]
-[ext_resource path="res://Fonts/OpenSans100.tres" type="DynamicFont" id=11]
+[ext_resource path="res://recursos/Fonts/OpenSans100.tres" type="DynamicFont" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 640, 10 )
+extents = Vector2( 624, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 640, 10 )
+extents = Vector2( 624, 10 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 352 )
@@ -315,7 +315,6 @@ position = Vector2( 1024, 336 )
 
 [node name="SpaceBar" parent="." instance=ExtResource( 8 )]
 position = Vector2( 640, 512 )
-scale = Vector2( 2.29787, 3.23219 )
 
 [node name="Char1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 64, 336 )
@@ -365,7 +364,6 @@ anims/RESET = SubResource( 8 )
 [node name="PauseMenu" parent="." instance=ExtResource( 4 )]
 
 [node name="GameOverScreen" parent="." instance=ExtResource( 5 )]
-visible = false
 
 [node name="WhoIsTheWinner" parent="GameOverScreen/CenterContainer/VBoxContainer" index="1"]
 modulate = Color( 1, 1, 1, 0 )
@@ -374,7 +372,9 @@ modulate = Color( 1, 1, 1, 0 )
 anims/GameOverAnim = SubResource( 9 )
 anims/RESET = SubResource( 10 )
 
+[connection signal="body_entered" from="Wall_right" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Wall_right" to="." method="body_exited"]
+[connection signal="body_entered" from="Wall_left" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Wall_left" to="." method="body_exited"]
 [connection signal="pressed" from="GameOverScreen/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 

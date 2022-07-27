@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Fonts/OpenSans100.tres" type="DynamicFont" id=1]
+[ext_resource path="res://recursos/Fonts/OpenSans100.tres" type="DynamicFont" id=1]
 
 [node name="GameOverScreen" type="Control"]
 anchor_right = 1.0

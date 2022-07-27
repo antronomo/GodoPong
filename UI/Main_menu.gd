@@ -2,6 +2,7 @@ extends Control
 
 func _ready() -> void:
 	$CenterContainer/VBoxContainer/StartButton.grab_focus()
+	$Version.text = "VERSION: " + Save.CurrentVersion
 
 func _on_StartButton_pressed() -> void:
 	get_tree().change_scene("res://Arena/Arena.tscn")

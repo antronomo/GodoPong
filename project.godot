@@ -14,9 +14,14 @@ config/name="GodoPong"
 run/main_scene="res://UI/Main_menu.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout="res://bus_layout.tres"
+
 [autoload]
 
-Save="*res://Save/save.gd"
+Save="*res://Auto/save.gd"
+Config="*res://Auto/Config.gd"
 
 [display]
 

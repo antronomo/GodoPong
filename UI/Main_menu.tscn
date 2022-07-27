@@ -1,16 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Fonts/OpenSans25.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Fonts/OpenSans100.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Fonts/OpenSans40.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Fonts/Mine-Regular_90_outline.tres" type="DynamicFont" id=4]
+[ext_resource path="res://recursos/Fonts/OpenSans25.tres" type="DynamicFont" id=1]
+[ext_resource path="res://recursos/Fonts/OpenSans100.tres" type="DynamicFont" id=2]
+[ext_resource path="res://recursos/Fonts/OpenSans40.tres" type="DynamicFont" id=3]
+[ext_resource path="res://recursos/Fonts/Mine-Regular_90_outline.tres" type="DynamicFont" id=4]
 [ext_resource path="res://UI/Main_menu.gd" type="Script" id=5]
-[ext_resource path="res://Fonts/Minecraftia-Regular.ttf" type="DynamicFontData" id=6]
-
-[sub_resource type="DynamicFont" id=1]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 6 )
+[ext_resource path="res://UI/CommingSoon.tscn" type="PackedScene" id=7]
 
 [node name="PrincipalMenu" type="Control"]
 anchor_right = 1.0
@@ -63,25 +58,7 @@ focus_neighbour_bottom = NodePath("../StartButton")
 custom_fonts/font = ExtResource( 2 )
 text = "QUIT"
 
-[node name="CommingSoon" type="Label" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -221.0
-margin_top = -76.0
-margin_right = 210.0
-margin_bottom = 6.99994
-rect_rotation = -6.6
-rect_pivot_offset = Vector2( 160, 40 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_y = 0
-custom_fonts/font = ExtResource( 3 )
-text = "COMMING SOON!"
-align = 1
-valign = 1
-uppercase = true
+[node name="CommingSoon" parent="." instance=ExtResource( 7 )]
 
 [node name="CommingSoon2" type="Label" parent="."]
 anchor_left = 0.5
@@ -115,18 +92,17 @@ text = "GodoPong"
 align = 1
 valign = 1
 
-[node name="HowToPlay" type="Label" parent="."]
-margin_left = 20.0
-margin_top = 113.0
-margin_right = 565.0
-margin_bottom = 272.0
-custom_fonts/font = SubResource( 1 )
-text = "HOW TO PLAY:
-Use W and S to navigate between buttons,
-Spacebar to select the button,
-ESC to exit,
-HAVE FUN!!
-feedback is apreciated"
+[node name="Version" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = -79.0
+margin_right = 372.0
+margin_bottom = -6.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+uppercase = true
 
 [node name="Creditos" type="Label" parent="."]
 anchor_top = 1.0
@@ -138,7 +114,7 @@ margin_bottom = -6.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Version: 0.3.3
+text = "
 CREATED BY: ANTRONOMO"
 uppercase = true
 

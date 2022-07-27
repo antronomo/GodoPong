@@ -5,6 +5,8 @@ var score1 : int = 0
 var score2 : int = 0
 var color_winner : Color
 var final_score : int
+var explosion_particle_path = load("res://Ball/ExplosionParticles.tscn")
+var coll_particle_path = load("res://Ball/CollisionParticles.tscn")
 
 onready var initial_spd : int = $Ball.spd
 onready var initial_pos_char1 : Vector2 = $Char1.position
@@ -49,6 +51,16 @@ func _ready() -> void:
 	# GameOverScreen
 	$GameOverScreen.visible = false
 
+	# Activar los nerfers si ambos on bots
+	if $Char1/Nerfer.is_stopped() && $Char1.c_name == $Char2.c_name && $Char2/Nerfer.is_stopped():
+		$Char1/Nerfer.start()
+		$Char2/Nerfer.start()
+
+func _on_body_entered(body : Node):
+	var new_explo = explosion_particle_path.instance()
+	new_explo.position = $Ball.position
+	add_child(new_explo)
+
 # Señal 'body_exited' de wall_left y wall_right
 func body_exited(body : Node) -> void:
 	if body == $Ball:
@@ -67,6 +79,12 @@ func body_exited(body : Node) -> void:
 		body.set_can_move(false)
 		body.position = game_size / 2
 		body.spd = initial_spd
+
+		$Char1/Nerfer.stop()
+		$Char1.spd = $Char1.InitialSPD
+
+		$Char2/Nerfer.stop()
+		$Char2.spd = $Char2.InitialSPD
 
 		check_score()
 
@@ -111,10 +129,17 @@ func _input(event) -> void:
 	if event.is_action_pressed("ui_accept"):
 		$SpaceBar.visible = false
 
-func set_WITW_color(new_color : Color):
+		# De todas formas, solo les afecta a los "bots"
+		if $Char1/Nerfer.is_stopped():
+			$Char1/Nerfer.start()
+
+		if $Char2/Nerfer.is_stopped():
+			$Char2/Nerfer.start()
+
+func set_WITW_color(new_color : Color) -> void:
 	GCVW.modulate = new_color
 
-func _process(_delta) -> void:
+func _process(_delta) -> void:	
 	if winner == "":
 		if Input.is_action_just_pressed("ui_accept"):
 			$Ball.set_can_move(true)
@@ -122,11 +147,13 @@ func _process(_delta) -> void:
 		if $Char1.c_name == "bot" && $Char1.c_name == $Char2.c_name:
 			$Ball.set_can_move(true)
 
-		# Si la pelota coge demasiada velocidad, puede empujar los personajes
-		$Char1.position.x = initial_pos_char1.x
-		$Char2.position.x = initial_pos_char2.x
-
 	else:
 		$Char1.set_can_move(false)
 		$Char2.set_can_move(false)
 		$Ball.set_can_move(false)
+
+func _physics_process(delta):
+	if $Ball.collision:
+		var coll_explo = coll_particle_path.instance()
+		coll_explo.position = $Ball.position
+		add_child(coll_explo)

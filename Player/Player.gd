@@ -2,32 +2,35 @@ extends KinematicBody2D
 
 onready var ball = get_parent().find_node("Ball")
 onready var s_size = get_parent().find_node("ColorRect")
-#si "can_move" está habilitado por defecto, dará errores fuera de "arena"
+#si "can_move" está habilitado por defecto, dara errores fuera de "arena"
 onready var can_move : bool = false setget set_can_move, get_can_move
 
-export var spd : int = 500
+const InitialSPD : int = 500
+
+export var spd : float = InitialSPD
 export var c_name : String setget set_cName
 
 var screen_size : Vector2
 var vel : Vector2 = Vector2.ZERO
 
 #Esto existe para que la consola no de avertencias
-var colision : KinematicCollision2D
+var collision : KinematicCollision2D
+var last_collision : KinematicCollision2D
 
 func player_movement(delta) -> void:
 	vel.y = Input.get_action_strength(c_name + "_down") - Input.get_action_strength(c_name + "_up")
-	colision = move_and_collide(vel * spd * delta)	
+	collision = move_and_collide(vel * InitialSPD * delta)	
 
 func bot_movement(delta) -> void:
 	vel.y = 0
-	if abs(ball.position.x - position.x) < s_size.rect_size.x / 2: #Si la pelota está en su mitad del campo
-		if abs(ball.position.y - position.y) > 25:
+	if abs(ball.position.x - position.x) < s_size.rect_size.x / 2: # Si la pelota está en su mitad del campo
+		if abs(ball.position.y - position.y) > 25: # Curar el Parkinson del bot
 			if ball.position.y > position.y:
 				vel.y = 1
 			else:
 				vel.y = -1
 
-	colision = move_and_collide(vel * spd * delta)
+	collision = move_and_collide(vel * spd * delta)
 
 func set_can_move(may_i : bool) -> void:
 	can_move = may_i
@@ -38,6 +41,13 @@ func get_can_move() -> bool:
 func set_cName(newName) -> void:
 	c_name = newName
 
+func _on_Nerfer_timeout():
+	spd -= InitialSPD * 0.10
+
+func _on_AnimationPlayer_animation_finished(anim_name : String):
+	if anim_name == "Hurted":
+		$AnimationPlayer.play("idle")
+
 func _physics_process(delta) -> void:
 	if can_move:
 		match c_name:
@@ -47,3 +57,12 @@ func _physics_process(delta) -> void:
 				player_movement(delta)
 			"bot":
 				bot_movement(delta)
+
+		# if collision:
+
+		# 	last_collision = get_last_slide_collision()
+
+		# 	print(str(last_collision))
+
+		# 	if last_collision == ball:
+		# 		$AnimationPlayer.play("Hurted")

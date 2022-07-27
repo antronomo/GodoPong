@@ -61,13 +61,13 @@ tracks/1/keys = {
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -48 )
+position = Vector2( 0, -40 )
 texture = ExtResource( 1 )
 vframes = 2
 
 [node name="Sprite2" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.498039 )
-position = Vector2( 0, 48 )
+position = Vector2( 0, 40 )
 texture = ExtResource( 1 )
 vframes = 2
 frame = 1
