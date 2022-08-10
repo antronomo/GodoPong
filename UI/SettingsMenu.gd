@@ -24,7 +24,14 @@ onready var ball_color_button = $TabContainer/Game/GameContainer/BallColor/BallC
 onready var win_con_but = $TabContainer/Game/GameContainer/WinCondition/GoalsToWin
 onready var win_con = $TabContainer/Game/GameContainer/WinCondition/GoalsToWin
 
+# Atajos para WindowTab
+onready var  FST_check = $TabContainer/Window/WindowContainer/FullScreenTogler/FST_CheckBox
+
 # Atajos para SoundTab
+onready var MASlabel = $TabContainer/Sound/SoundContainer/MasterVolume/SlideLabel
+onready var MASslider = $TabContainer/Sound/SoundContainer/MasterVolume/MasterSlider
+onready var MAScheck = $TabContainer/Sound/SoundContainer/MasterVolume/MasterCheckBox
+
 onready var SFXlabel = $TabContainer/Sound/SoundContainer/SoundEffect/SlideLabel
 onready var SFXslider = $TabContainer/Sound/SoundContainer/SoundEffect/SoundSlider
 onready var SFXcheck = $TabContainer/Sound/SoundContainer/SoundEffect/SoundCheckBox
@@ -33,15 +40,13 @@ onready var MSClabel = $TabContainer/Sound/SoundContainer/MusicEffect/SlideLabel
 onready var MSCslider = $TabContainer/Sound/SoundContainer/MusicEffect/MusicSlider
 onready var MSCcheck = $TabContainer/Sound/SoundContainer/MusicEffect/MusicCheckBox
 
-onready var MASlabel = $TabContainer/Sound/SoundContainer/MasterVolume/SlideLabel
-onready var MASslider = $TabContainer/Sound/SoundContainer/MasterVolume/MasterSlider
-onready var MAScheck = $TabContainer/Sound/SoundContainer/MasterVolume/MasterCheckBox
-
 # Para escribir menos
 onready var Sgd : Dictionary = Save.game_data
 
 func _ready() -> void:
 	set_game_data()
+
+	$TabContainer/Game/GameContainer/Character1/Char1Mode.grab_focus()
 
 func set_game_data():
 	Sgd = Save.game_data
@@ -57,6 +62,8 @@ func set_game_data():
 	win_con_but.select(Sgd.win_condition)
 	ball_color_cr.color = Sgd.ball_color
 	ball_color_picker.color = Sgd.ball_color
+
+	FST_check.pressed = Sgd.full_screen
 	
 	MASslider.value = Sgd.MAS_slider
 	MAScheck.pressed = Sgd.MAS_muted
@@ -102,36 +109,48 @@ func _on_BallColorPicker_color_changed(color_picked : Color) -> void:
 func _on_GoalsToWin_item_selected(index : int) -> void:
 	Sgd.win_condition = index
 
+# WINDOW TAB-------------------------------------------------------------
+# FULL SCREEN
+func _on_FST_CheckBox_toggled(button_pressed : bool) -> void:
+	Sgd.full_screen = button_pressed
+	Config.window_updater()
+
 # SOUND TAB --------------------------------------------------------------
 # MASTER VOLUME
 func _on_MasterSlider_value_changed(value : float) -> void:
 	MASlabel.text = str(value * 100) + "%"
 	Sgd.MAS_slider = value
+	Config.audio_updater()
 
 func _on_MasterCheckBox_toggled(value : bool) -> void:
 	MASslider.editable = !value
 	MASlabel.modulate = Color(1, 1, 1, 1) if !value else Color(1, 1, 1, 0.5)
 	Sgd.MAS_muted = value
+	Config.audio_updater()
 
 # SOUND FX VOLUME
 func _on_SoundSlider_value_changed(value : float) -> void:
 	SFXlabel.text = str(value * 100) + "%"
 	Sgd.SFX_slider = value
+	Config.audio_updater()
 
 func _on_SoundCheckBox_toggled(value : bool) -> void:
 	SFXslider.editable = !value
 	SFXlabel.modulate = Color(1, 1, 1, 1) if !value else Color(1, 1, 1, 0.5)
 	Sgd.SFX_muted = value
+	Config.audio_updater()
 
 # MUSIC VOLUME
 func _on_MusicSlider_value_changed(value : float) -> void:
 	MSClabel.text = str(value * 100) + "%"
 	Sgd.MSC_slider = value
+	Config.audio_updater()
 
 func _on_MusicCheckBox_toggled(value : bool) -> void:
 	MSCslider.editable = !value
 	MSClabel.modulate = Color(1, 1, 1, 1) if !value else Color(1, 1, 1, 0.5)
 	Sgd.MSC_muted = value
+	Config.audio_updater()
 
 # BOTTOM BUTTONS
 # TO RESET TO DEFAULT ---------------------------------------------------
@@ -143,6 +162,11 @@ func _on_DefaultSettingsButton_pressed() -> void:
 func _on_SAE_button_pressed() -> void:
 	exiting()
 
+# SAVE AND RUN INTRO
+func _on_S_and_RI_button_pressed():
+	Save.save_data()
+	get_tree().change_scene("res://Intro/Intro.tscn")
+	
 #-------------------------------------------------------------------------
 
 func _input(event) -> void:
@@ -154,7 +178,6 @@ func _input(event) -> void:
 
 func exiting() -> void:
 	Save.save_data()
-	Config.audio_updater()
 	get_tree().change_scene("res://UI/Main_menu.tscn")
 
 func _on_ItchIO_pressed():
@@ -165,6 +188,9 @@ func _on_GitHub_pressed():
 
 func _on_Twitch_pressed():
 	OS.shell_open("https://www.twitch.tv/rafalagoon")
+
+func _on_link_to_music_pressed():
+	OS.shell_open("https://www.youtube.com/watch?v=Hvdfx9avekU&list=PLwJjxqYuirCLkq42mGw4XKGQlpZSfxsYd&index=4&ab_channel=FreeMusic")
 
 # Su función es esconder los colorpickers si su botón tiene o no "focus"
 func hidder_picker(value : bool) -> void:

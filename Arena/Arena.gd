@@ -51,7 +51,7 @@ func _ready() -> void:
 	# GameOverScreen
 	$GameOverScreen.visible = false
 
-	# Activar los nerfers si ambos on bots
+	# Activar los nerfers si ambos tienen el mismo nombre (solo afecta a los bots)
 	if $Char1/Nerfer.is_stopped() && $Char1.c_name == $Char2.c_name && $Char2/Nerfer.is_stopped():
 		$Char1/Nerfer.start()
 		$Char2/Nerfer.start()
@@ -60,6 +60,8 @@ func _on_body_entered(body : Node):
 	var new_explo = explosion_particle_path.instance()
 	new_explo.position = $Ball.position
 	add_child(new_explo)
+	$ExplosionStreamPlayer.stream = GlobalPlayer.explosion_sfx
+	$ExplosionStreamPlayer.play()
 
 # Señal 'body_exited' de wall_left y wall_right
 func body_exited(body : Node) -> void:
@@ -80,10 +82,11 @@ func body_exited(body : Node) -> void:
 		body.position = game_size / 2
 		body.spd = initial_spd
 
-		$Char1/Nerfer.stop()
-		$Char1.spd = $Char1.InitialSPD
+		if $Char1.c_name != $Char2.c_name:
+			$Char1/Nerfer.stop()
+			$Char2/Nerfer.stop()
 
-		$Char2/Nerfer.stop()
+		$Char1.spd = $Char1.InitialSPD
 		$Char2.spd = $Char2.InitialSPD
 
 		check_score()

@@ -7,7 +7,7 @@ var spd : int = 800
 var vel : Vector2 = Vector2.ZERO
 var collision : KinematicCollision2D
 
-# No cuestionen los nombres, yo me entero, lo uso para que la pelota no rebote muy en vertival o horizontal
+# No cuestionen los nombres, yo me entero, lo uso para que la pelota no rebote muy en vertival ni horizontal
 export var diferencia : float = 0.25
 export var multiplicador : float = 8.0
 

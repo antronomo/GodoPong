@@ -4,6 +4,13 @@ onready var Sgd : Dictionary = Save.game_data
 
 func _ready() -> void:
 	audio_updater()
+	window_updater()
+
+func window_updater() -> void:
+	Sgd = Save.game_data
+
+	OS.window_fullscreen = Sgd.full_screen
+	# OS.window_borderless
 
 func audio_updater() -> void:
 	Sgd = Save.game_data

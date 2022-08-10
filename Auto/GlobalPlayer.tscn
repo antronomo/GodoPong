@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Auto/GlobalPlayer.gd" type="Script" id=1]
+[ext_resource path="res://recursos/Music/Eric_Skiff_A_Night_Of_Dizzy_Spells.ogg" type="AudioStream" id=2]
+[ext_resource path="res://recursos/SFX/explosion_589892567.ogg" type="AudioStream" id=3]
+
+[node name="GlobalPlayer" type="Node"]
+script = ExtResource( 1 )
+main_music = ExtResource( 2 )
+explosion_sfx = ExtResource( 3 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = "Music"

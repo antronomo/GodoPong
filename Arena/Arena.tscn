@@ -372,6 +372,10 @@ modulate = Color( 1, 1, 1, 0 )
 anims/GameOverAnim = SubResource( 9 )
 anims/RESET = SubResource( 10 )
 
+[node name="ExplosionStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 10.0
+bus = "SoundFX"
+
 [connection signal="body_entered" from="Wall_right" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Wall_right" to="." method="body_exited"]
 [connection signal="body_entered" from="Wall_left" to="." method="_on_body_entered"]

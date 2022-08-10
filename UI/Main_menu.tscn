@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://recursos/Fonts/OpenSans25.tres" type="DynamicFont" id=1]
 [ext_resource path="res://recursos/Fonts/OpenSans100.tres" type="DynamicFont" id=2]
 [ext_resource path="res://recursos/Fonts/OpenSans40.tres" type="DynamicFont" id=3]
 [ext_resource path="res://recursos/Fonts/Mine-Regular_90_outline.tres" type="DynamicFont" id=4]
 [ext_resource path="res://UI/Main_menu.gd" type="Script" id=5]
+[ext_resource path="res://UI/GodotLogo.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/CommingSoon.tscn" type="PackedScene" id=7]
 
 [node name="PrincipalMenu" type="Control"]
@@ -88,7 +89,7 @@ margin_bottom = 171.0
 custom_colors/font_color = Color( 0, 0.647059, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0.231373, 0.231373, 0.231373, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "GodoPong"
+text = "    odoPong"
 align = 1
 valign = 1
 
@@ -118,7 +119,20 @@ text = "
 CREATED BY: ANTRONOMO"
 uppercase = true
 
+[node name="GodotLogo" parent="." instance=ExtResource( 6 )]
+position = Vector2( 400, 80 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="GodotLogoTop" parent="GodotLogo" index="0"]
+rotation = -0.349066
+frame = 1
+
+[node name="GodotLogoBottom" parent="GodotLogo" index="1"]
+rotation = 0.349066
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ScoreButton" to="." method="_on_ScoreButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+
+[editable path="GodotLogo"]

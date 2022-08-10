@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="GodoPong"
-run/main_scene="res://UI/Main_menu.tscn"
+run/main_scene="res://Intro/Intro.tscn"
 config/icon="res://icon.png"
 
 [audio]
@@ -22,6 +22,7 @@ default_bus_layout="res://bus_layout.tres"
 
 Save="*res://Auto/save.gd"
 Config="*res://Auto/Config.gd"
+GlobalPlayer="*res://Auto/GlobalPlayer.tscn"
 
 [display]
 

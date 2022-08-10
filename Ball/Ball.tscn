@@ -15,6 +15,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -9.53674e-07, -9.53674e-07 )
+z_index = 10
+texture = ExtResource( 4 )
+
 [node name="Particles2D" type="Particles2D" parent="."]
 amount = 24
 lifetime = 0.15
@@ -31,11 +36,6 @@ disabled = true
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2( -5.68434e-14, -5.68434e-14 )
 shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -9.53674e-07, -9.53674e-07 )
-z_index = 10
-texture = ExtResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

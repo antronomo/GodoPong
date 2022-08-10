@@ -9,7 +9,7 @@
 [ext_resource path="res://recursos/Icons/MadeWithGodot.jpg" type="Texture" id=7]
 [ext_resource path="res://UI/HowToPlay.tscn" type="PackedScene" id=8]
 [ext_resource path="res://recursos/Fonts/MineRegular16_White.tres" type="DynamicFont" id=9]
-[ext_resource path="res://recursos/Icons/antronomo.png" type="Texture" id=10]
+[ext_resource path="res://recursos/Icons/Antronomo.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 5 )
@@ -20,8 +20,7 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
-"_editor_description_": "Añadir opciones para:
-cambiar modo jugador/bots a los chars, cambiar color de los chars y pelota, y si eso de que acabamso añadiendo audios pues opciones para regular los sonidos"
+"_editor_description_": ""
 }
 
 [node name="Background" type="ColorRect" parent="."]
@@ -61,6 +60,12 @@ margin_left = 4.0
 margin_top = 40.0
 margin_right = -4.0
 margin_bottom = -4.0
+focus_neighbour_left = NodePath("../About")
+focus_neighbour_top = NodePath("../../SAE_button")
+focus_neighbour_right = NodePath("../Window")
+focus_neighbour_bottom = NodePath("GameContainer/Character1/Char1Mode")
+focus_next = NodePath("../Window")
+focus_previous = NodePath("../About")
 
 [node name="GameContainer" type="VBoxContainer" parent="TabContainer/Game"]
 anchor_right = 1.0
@@ -128,10 +133,10 @@ margin_right = 1444.0
 margin_bottom = 420.0
 
 [node name="Char1ColorPicker" type="ColorPicker" parent="TabContainer/Game/GameContainer/Character1Color/Popup"]
-margin_left = -244.0
-margin_top = 64.0
-margin_right = 64.0
-margin_bottom = 476.0
+margin_left = -216.0
+margin_top = 92.0
+margin_right = 92.0
+margin_bottom = 504.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
@@ -205,10 +210,10 @@ margin_right = 1468.0
 margin_bottom = 420.0
 
 [node name="Char2ColorPicker" type="ColorPicker" parent="TabContainer/Game/GameContainer/Character2Color/Popup"]
-margin_left = -244.0
-margin_top = 64.0
-margin_right = 64.0
-margin_bottom = 476.0
+margin_left = -216.0
+margin_top = 92.0
+margin_right = 92.0
+margin_bottom = 504.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
@@ -258,10 +263,10 @@ margin_right = 1468.0
 margin_bottom = 470.0
 
 [node name="BallColorPicker" type="ColorPicker" parent="TabContainer/Game/GameContainer/BallColor/Popup"]
-margin_left = -244.0
-margin_top = 64.0
-margin_right = 64.0
-margin_bottom = 476.0
+margin_left = -216.0
+margin_top = 92.0
+margin_right = 92.0
+margin_bottom = 504.0
 edit_alpha = false
 presets_enabled = false
 presets_visible = false
@@ -321,12 +326,53 @@ margin_top = 40.0
 margin_right = -4.0
 margin_bottom = -4.0
 
+[node name="WindowContainer" type="VBoxContainer" parent="TabContainer/Window"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 36.0
+margin_top = 24.0
+margin_right = -28.0
+margin_bottom = -36.0
+
+[node name="FullScreenTogler" type="HBoxContainer" parent="TabContainer/Window/WindowContainer"]
+margin_right = 1080.0
+margin_bottom = 35.0
+
+[node name="Label" type="Label" parent="TabContainer/Window/WindowContainer/FullScreenTogler"]
+margin_right = 188.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 3 )
+text = " Full Screen "
+valign = 1
+
+[node name="-SEPARADOR-" type="Label" parent="TabContainer/Window/WindowContainer/FullScreenTogler"]
+margin_left = 192.0
+margin_top = 10.0
+margin_right = 212.0
+margin_bottom = 24.0
+text = "     "
+
+[node name="FST_CheckBox" type="CheckBox" parent="TabContainer/Window/WindowContainer/FullScreenTogler"]
+margin_left = 216.0
+margin_right = 240.0
+margin_bottom = 35.0
+
+[node name="-SEPARADOR-" type="HBoxContainer" parent="TabContainer/Window/WindowContainer"]
+margin_top = 39.0
+margin_right = 1080.0
+margin_bottom = 87.0
+
+[node name="Label" type="Label" parent="TabContainer/Window/WindowContainer/-SEPARADOR-"]
+margin_bottom = 48.0
+text = "
+
+"
+
 [node name="CommingSoon" parent="TabContainer/Window" instance=ExtResource( 6 )]
-visible = true
-margin_left = -230.0
-margin_top = -41.5
-margin_right = 230.0
-margin_bottom = 41.5
+margin_left = -224.0
+margin_top = -38.0
+margin_right = 236.0
+margin_bottom = 45.0
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 225.902, 39.5901 )
 
@@ -349,31 +395,31 @@ margin_bottom = -28.0
 
 [node name="MasterVolume" type="HBoxContainer" parent="TabContainer/Sound/SoundContainer"]
 margin_right = 1104.0
-margin_bottom = 30.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Sound/SoundContainer/MasterVolume"]
 margin_top = 4.0
-margin_right = 318.0
-margin_bottom = 26.0
+margin_right = 308.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 3 )
 text = "Master Volume"
 
 [node name="SlideLabel" type="Label" parent="TabContainer/Sound/SoundContainer/MasterVolume"]
-margin_left = 322.0
+margin_left = 312.0
 margin_top = 4.0
-margin_right = 641.0
-margin_bottom = 26.0
+margin_right = 620.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 3 )
 text = "100%"
 align = 2
 
 [node name="MasterSlider" type="HSlider" parent="TabContainer/Sound/SoundContainer/MasterVolume"]
-margin_left = 645.0
-margin_right = 963.0
-margin_bottom = 30.0
+margin_left = 624.0
+margin_right = 932.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
@@ -381,23 +427,23 @@ step = 0.01
 value = 1.0
 
 [node name="LabelSeparator" type="Label" parent="TabContainer/Sound/SoundContainer/MasterVolume"]
-margin_left = 967.0
-margin_top = 8.0
-margin_right = 1015.0
-margin_bottom = 22.0
+margin_left = 936.0
+margin_top = 14.0
+margin_right = 984.0
+margin_bottom = 28.0
 text = "            "
 
 [node name="MasterCheckBox" type="CheckBox" parent="TabContainer/Sound/SoundContainer/MasterVolume"]
-margin_left = 1019.0
-margin_right = 1103.0
-margin_bottom = 30.0
-custom_fonts/font = ExtResource( 9 )
+margin_left = 988.0
+margin_right = 1104.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 3 )
 text = "Muted"
 
 [node name="-SEPARADOR-" type="HBoxContainer" parent="TabContainer/Sound/SoundContainer"]
-margin_top = 34.0
+margin_top = 47.0
 margin_right = 1104.0
-margin_bottom = 65.0
+margin_bottom = 78.0
 
 [node name="Label" type="Label" parent="TabContainer/Sound/SoundContainer/-SEPARADOR-"]
 margin_bottom = 31.0
@@ -405,33 +451,33 @@ text = "
 "
 
 [node name="SoundEffect" type="HBoxContainer" parent="TabContainer/Sound/SoundContainer"]
-margin_top = 69.0
+margin_top = 82.0
 margin_right = 1104.0
-margin_bottom = 99.0
+margin_bottom = 125.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Sound/SoundContainer/SoundEffect"]
 margin_top = 4.0
-margin_right = 318.0
-margin_bottom = 26.0
+margin_right = 308.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 3 )
 text = "Sound Effects"
 
 [node name="SlideLabel" type="Label" parent="TabContainer/Sound/SoundContainer/SoundEffect"]
-margin_left = 322.0
+margin_left = 312.0
 margin_top = 4.0
-margin_right = 641.0
-margin_bottom = 26.0
+margin_right = 620.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 3 )
 text = "100%"
 align = 2
 
 [node name="SoundSlider" type="HSlider" parent="TabContainer/Sound/SoundContainer/SoundEffect"]
-margin_left = 645.0
-margin_right = 963.0
-margin_bottom = 30.0
+margin_left = 624.0
+margin_right = 932.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
@@ -439,23 +485,23 @@ step = 0.01
 value = 1.0
 
 [node name="LabelSeparator" type="Label" parent="TabContainer/Sound/SoundContainer/SoundEffect"]
-margin_left = 967.0
-margin_top = 8.0
-margin_right = 1015.0
-margin_bottom = 22.0
+margin_left = 936.0
+margin_top = 14.0
+margin_right = 984.0
+margin_bottom = 28.0
 text = "            "
 
 [node name="SoundCheckBox" type="CheckBox" parent="TabContainer/Sound/SoundContainer/SoundEffect"]
-margin_left = 1019.0
-margin_right = 1103.0
-margin_bottom = 30.0
-custom_fonts/font = ExtResource( 9 )
+margin_left = 988.0
+margin_right = 1104.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 3 )
 text = "Muted"
 
 [node name="-SEPARADOR-2" type="HBoxContainer" parent="TabContainer/Sound/SoundContainer"]
-margin_top = 103.0
+margin_top = 129.0
 margin_right = 1104.0
-margin_bottom = 134.0
+margin_bottom = 160.0
 
 [node name="Label" type="Label" parent="TabContainer/Sound/SoundContainer/-SEPARADOR-2"]
 margin_bottom = 31.0
@@ -463,33 +509,33 @@ text = "
 "
 
 [node name="MusicEffect" type="HBoxContainer" parent="TabContainer/Sound/SoundContainer"]
-margin_top = 138.0
+margin_top = 164.0
 margin_right = 1104.0
-margin_bottom = 168.0
+margin_bottom = 207.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Sound/SoundContainer/MusicEffect"]
 margin_top = 4.0
-margin_right = 318.0
-margin_bottom = 26.0
+margin_right = 308.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 3 )
 text = "Music"
 
 [node name="SlideLabel" type="Label" parent="TabContainer/Sound/SoundContainer/MusicEffect"]
-margin_left = 322.0
+margin_left = 312.0
 margin_top = 4.0
-margin_right = 641.0
-margin_bottom = 26.0
+margin_right = 620.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 3 )
 text = "100%"
 align = 2
 
 [node name="MusicSlider" type="HSlider" parent="TabContainer/Sound/SoundContainer/MusicEffect"]
-margin_left = 645.0
-margin_right = 963.0
-margin_bottom = 30.0
+margin_left = 624.0
+margin_right = 932.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
@@ -497,23 +543,23 @@ step = 0.01
 value = 1.0
 
 [node name="LabelSeparator" type="Label" parent="TabContainer/Sound/SoundContainer/MusicEffect"]
-margin_left = 967.0
-margin_top = 8.0
-margin_right = 1015.0
-margin_bottom = 22.0
+margin_left = 936.0
+margin_top = 14.0
+margin_right = 984.0
+margin_bottom = 28.0
 text = "            "
 
 [node name="MusicCheckBox" type="CheckBox" parent="TabContainer/Sound/SoundContainer/MusicEffect"]
-margin_left = 1019.0
-margin_right = 1103.0
-margin_bottom = 30.0
-custom_fonts/font = ExtResource( 9 )
+margin_left = 988.0
+margin_right = 1104.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 3 )
 text = "Muted"
 
 [node name="-SEPARADOR-3" type="HBoxContainer" parent="TabContainer/Sound/SoundContainer"]
-margin_top = 172.0
+margin_top = 211.0
 margin_right = 1104.0
-margin_bottom = 237.0
+margin_bottom = 276.0
 
 [node name="Label" type="Label" parent="TabContainer/Sound/SoundContainer/-SEPARADOR-3"]
 margin_bottom = 65.0
@@ -562,19 +608,48 @@ rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 225.902, 39.5901 )
 
 [node name="MadeWithGodot" type="Sprite" parent="TabContainer/About"]
+visible = false
 position = Vector2( 988, 352 )
 texture = ExtResource( 7 )
 
-[node name="Antronomo" type="Sprite" parent="TabContainer/About"]
-position = Vector2( 828, 352 )
-rotation = 0.383972
-scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 10 )
+[node name="Antronomo" parent="TabContainer/About" instance=ExtResource( 10 )]
+visible = false
+position = Vector2( 796, 352 )
+scale = Vector2( 0.2, 0.2 )
 
 [node name="HowToPlay" parent="TabContainer/About" instance=ExtResource( 8 )]
 margin_top = 24.0
 margin_right = 420.0
 margin_bottom = 371.0
+
+[node name="About" parent="TabContainer/About" instance=ExtResource( 8 )]
+margin_left = 524.0
+margin_top = 24.0
+margin_right = 1090.0
+margin_bottom = 104.0
+text = "As you may know, this game is totally free, you can download
+the game on                   , also you can download the repository
+on                  , im doing this for learning proposites."
+
+[node name="ItchIO" type="LinkButton" parent="TabContainer/About/About"]
+modulate = Color( 0.596078, 0, 0.866667, 1 )
+margin_left = 120.0
+margin_top = 24.0
+margin_right = 188.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 9 )
+text = "Itch.io"
+underline = 1
+
+[node name="GitHub" type="LinkButton" parent="TabContainer/About/About"]
+modulate = Color( 0.596078, 0, 0.866667, 1 )
+margin_left = 32.0
+margin_top = 48.0
+margin_right = 92.0
+margin_bottom = 70.0
+custom_fonts/font = ExtResource( 9 )
+text = "GitHub"
+underline = 1
 
 [node name="SpecialTHX" parent="TabContainer/About" instance=ExtResource( 8 )]
 margin_left = 516.0
@@ -595,34 +670,41 @@ custom_fonts/font = ExtResource( 9 )
 text = "RAFA LAGOON"
 underline = 1
 
-[node name="About" parent="TabContainer/About" instance=ExtResource( 8 )]
-margin_left = 524.0
-margin_top = 24.0
-margin_right = 1090.0
-margin_bottom = 104.0
-text = "As you may know, this game is totally free, you can download
-the game on                   , also you can download the repository
-on                  , im doing this for learning proposites."
+[node name="Credit_music_label" type="Label" parent="TabContainer/About"]
+margin_left = 516.0
+margin_top = 232.0
+margin_right = 1144.0
+margin_bottom = 254.0
+custom_fonts/font = ExtResource( 9 )
+text = "If you like what are you listening, you can hear this 
+and more               .
 
-[node name="ItchIO" type="LinkButton" parent="TabContainer/About/About"]
+yeah, too lazy to make my own music, tried lmms but meh"
+
+[node name="link_to_music" type="LinkButton" parent="TabContainer/About/Credit_music_label"]
 modulate = Color( 0.596078, 0, 0.866667, 1 )
-margin_left = 120.0
+margin_left = 96.0
 margin_top = 24.0
-margin_right = 188.0
+margin_right = 144.0
 margin_bottom = 46.0
 custom_fonts/font = ExtResource( 9 )
-text = "Itch.IO"
-underline = 1
+text = "HERE"
 
-[node name="GitHub" type="LinkButton" parent="TabContainer/About/About"]
-modulate = Color( 0.596078, 0, 0.866667, 1 )
-margin_left = 32.0
-margin_top = 48.0
-margin_right = 92.0
-margin_bottom = 70.0
-custom_fonts/font = ExtResource( 9 )
-text = "GitHub"
-underline = 1
+[node name="S_and_RI_button" type="Button" parent="TabContainer/About"]
+margin_left = 4.0
+margin_top = 456.0
+margin_right = 266.0
+margin_bottom = 539.0
+custom_fonts/font = ExtResource( 4 )
+text = " Run Intro "
+
+[node name="S_and_RI_label" type="Label" parent="TabContainer/About"]
+margin_left = 60.0
+margin_top = 432.0
+margin_right = 199.0
+margin_bottom = 467.0
+custom_fonts/font = ExtResource( 3 )
+text = "Save and"
 
 [node name="SAE_button" type="Button" parent="."]
 anchor_left = 0.5
@@ -676,14 +758,17 @@ valign = 1
 [connection signal="pressed" from="TabContainer/Game/GameContainer/BallColor/BallColorBut" to="." method="_on_BallColorBut_pressed"]
 [connection signal="color_changed" from="TabContainer/Game/GameContainer/BallColor/Popup/BallColorPicker" to="." method="_on_BallColorPicker_color_changed"]
 [connection signal="item_selected" from="TabContainer/Game/GameContainer/WinCondition/GoalsToWin" to="." method="_on_GoalsToWin_item_selected"]
+[connection signal="toggled" from="TabContainer/Window/WindowContainer/FullScreenTogler/FST_CheckBox" to="." method="_on_FST_CheckBox_toggled"]
 [connection signal="value_changed" from="TabContainer/Sound/SoundContainer/MasterVolume/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
 [connection signal="toggled" from="TabContainer/Sound/SoundContainer/MasterVolume/MasterCheckBox" to="." method="_on_MasterCheckBox_toggled"]
 [connection signal="value_changed" from="TabContainer/Sound/SoundContainer/SoundEffect/SoundSlider" to="." method="_on_SoundSlider_value_changed"]
 [connection signal="toggled" from="TabContainer/Sound/SoundContainer/SoundEffect/SoundCheckBox" to="." method="_on_SoundCheckBox_toggled"]
 [connection signal="value_changed" from="TabContainer/Sound/SoundContainer/MusicEffect/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="toggled" from="TabContainer/Sound/SoundContainer/MusicEffect/MusicCheckBox" to="." method="_on_MusicCheckBox_toggled"]
-[connection signal="pressed" from="TabContainer/About/SpecialTHX/Twitch" to="." method="_on_Twitch_pressed"]
 [connection signal="pressed" from="TabContainer/About/About/ItchIO" to="." method="_on_ItchIO_pressed"]
 [connection signal="pressed" from="TabContainer/About/About/GitHub" to="." method="_on_GitHub_pressed"]
+[connection signal="pressed" from="TabContainer/About/SpecialTHX/Twitch" to="." method="_on_Twitch_pressed"]
+[connection signal="pressed" from="TabContainer/About/Credit_music_label/link_to_music" to="." method="_on_link_to_music_pressed"]
+[connection signal="pressed" from="TabContainer/About/S_and_RI_button" to="." method="_on_S_and_RI_button_pressed"]
 [connection signal="pressed" from="SAE_button" to="." method="_on_SAE_button_pressed"]
 [connection signal="pressed" from="DefaultSettingsButton" to="." method="_on_DefaultSettingsButton_pressed"]

@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=6 format=2]
+
+[ext_resource path="res://recursos/Default_theme_font.tres" type="DynamicFont" id=4]
+
+[sub_resource type="StyleBoxTexture" id=5]
+region_rect = Rect2( 0, 0, 620, 86 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+region_rect = Rect2( 0, 0, 620, 86 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+region_rect = Rect2( 0, 0, 620, 86 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+region_rect = Rect2( 0, 0, 620, 86 )
+
+[resource]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/fonts/font = ExtResource( 4 )
+Button/styles/disabled = SubResource( 5 )
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = SubResource( 2 )
+LineEdit/fonts/font = ExtResource( 4 )
+TabContainer/fonts/font = ExtResource( 4 )
+Tree/fonts/font = ExtResource( 4 )
+Tree/fonts/title_button_font = ExtResource( 4 )
