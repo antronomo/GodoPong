@@ -5,6 +5,7 @@
 [ext_resource path="res://recursos/SFX/explosion_589892567.ogg" type="AudioStream" id=3]
 
 [node name="GlobalPlayer" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )
 main_music = ExtResource( 2 )
 explosion_sfx = ExtResource( 3 )
