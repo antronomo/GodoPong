@@ -14,6 +14,7 @@ onready var initial_pos_char2 : Vector2 = $Char2.position
 onready var game_size : Vector2 = $ColorRect.rect_size
 onready var score_anim = $Container/AnimationPlayer
 onready var ui_anim = $UI_AnimationPlayer
+onready var b_trail: Node = $BallTrail2D
 
 # Para escribir menos
 onready var Sgd = Save.game_data
@@ -47,6 +48,7 @@ func _ready() -> void:
 	$Ball.position = game_size / 2
 	$Ball.modulate = Sgd.ball_color
 	$SpaceBar.visible = false if indice1 == 1 && indice2 == 1 else true
+	b_trail.modulate = Sgd.ball_color
 	
 	# GameOverScreen
 	$GameOverScreen.visible = false
@@ -154,6 +156,11 @@ func _process(_delta) -> void:
 		$Char1.set_can_move(false)
 		$Char2.set_can_move(false)
 		$Ball.set_can_move(false)
+
+	b_trail.add_point($Ball.position)
+
+	if b_trail.get_point_count() > 45:
+		b_trail.remove_point(0)
 
 func _physics_process(delta):
 	if $Ball.collision:
