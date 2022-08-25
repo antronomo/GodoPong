@@ -233,6 +233,7 @@ position = Vector2( 664, 360 )
 
 [node name="Area2D" type="StaticBody2D" parent="GodotPanel"]
 position = Vector2( 504, 376 )
+collision_mask = 3
 __meta__ = {
 "_edit_group_": true
 }
