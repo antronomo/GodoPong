@@ -37,6 +37,7 @@ pantalla=false
 window=false
 frames=false
 entrada=false
+coll=false
 
 [input]
 

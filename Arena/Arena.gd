@@ -125,6 +125,7 @@ func _on_MainMenuButton_pressed():
 
 # Esto es para esconder el "tutorial rápido sobre los controles"
 func _input(event) -> void:
+
 	if event.is_action_pressed("player1_up") || event.is_action_pressed("player1_down"):
 		$C1Controllers.visible = false
 
@@ -133,6 +134,9 @@ func _input(event) -> void:
 
 	if event.is_action_pressed("ui_accept"):
 		$SpaceBar.visible = false
+
+		if winner == "":
+			$Ball.set_can_move(true)
 
 		# De todas formas, solo les afecta a los "bots"
 		if $Char1/Nerfer.is_stopped():
@@ -146,9 +150,6 @@ func set_WITW_color(new_color : Color) -> void:
 
 func _process(_delta) -> void:	
 	if winner == "":
-		if Input.is_action_just_pressed("ui_accept"):
-			$Ball.set_can_move(true)
-
 		if $Char1.c_name == "bot" && $Char1.c_name == $Char2.c_name:
 			$Ball.set_can_move(true)
 
@@ -161,6 +162,9 @@ func _process(_delta) -> void:
 
 	if b_trail.get_point_count() > 45:
 		b_trail.remove_point(0)
+
+	$Char1.position.x = initial_pos_char1.x
+	$Char2.position.x = initial_pos_char2.x
 
 func _physics_process(delta):
 	if $Ball.collision:

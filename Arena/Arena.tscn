@@ -275,6 +275,7 @@ flip_h = true
 
 [node name="Wall_top" type="StaticBody2D" parent="."]
 position = Vector2( 640, 0 )
+collision_mask = 3
 __meta__ = {
 "_edit_group_": true
 }
@@ -284,6 +285,7 @@ shape = SubResource( 1 )
 
 [node name="Wall_down" type="StaticBody2D" parent="."]
 position = Vector2( 640, 720 )
+collision_mask = 3
 __meta__ = {
 "_edit_group_": true
 }
@@ -293,6 +295,7 @@ shape = SubResource( 2 )
 
 [node name="Wall_right" type="Area2D" parent="."]
 position = Vector2( -32, 360 )
+collision_mask = 3
 __meta__ = {
 "_edit_group_": true
 }
@@ -304,6 +307,7 @@ shape = SubResource( 3 )
 
 [node name="Wall_left" type="Area2D" parent="."]
 position = Vector2( 1311, 360 )
+collision_mask = 3
 __meta__ = {
 "_edit_group_": true
 }

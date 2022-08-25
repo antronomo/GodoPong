@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func movement(delta) -> void:
 	if collision:
-		# spd += 10
+
 		SoundFX.play()
 		vel = vel.bounce(collision.normal)
 

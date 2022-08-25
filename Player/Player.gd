@@ -15,7 +15,6 @@ var vel : Vector2 = Vector2.ZERO
 
 #Esto existe para que la consola no de avertencias
 var collision : KinematicCollision2D
-var last_collision : KinematicCollision2D
 
 func player_movement(delta) -> void:
 	vel.y = Input.get_action_strength(c_name + "_down") - Input.get_action_strength(c_name + "_up")
@@ -47,6 +46,7 @@ func _on_Nerfer_timeout():
 func _on_AnimationPlayer_animation_finished(anim_name : String):
 	if anim_name == "Hurted":
 		$AnimationPlayer.play("idle")
+		print(c_name, "can dettect ball")
 
 func _physics_process(delta) -> void:
 	if can_move:
@@ -58,11 +58,9 @@ func _physics_process(delta) -> void:
 			"bot":
 				bot_movement(delta)
 
-		# if collision:
+		if collision:
+			var coll = collision.collider
 
-		# 	last_collision = get_last_slide_collision()
-
-		# 	print(str(last_collision))
-
-		# 	if last_collision == ball:
-		# 		$AnimationPlayer.play("Hurted")
+			if coll == ball:
+				$AnimationPlayer.play("Hurted")
+				print(c_name, "cannot dettect ball")

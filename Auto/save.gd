@@ -1,7 +1,7 @@
 extends Node
 
 const SAVEFILE = "user://SAVEFILE.save"
-const CurrentVersion = "0.5.2"
+const CurrentVersion = "0.5.3"
 const DefaultGameData : Dictionary = {
 	"version" : CurrentVersion,
 	"char1_mode" : 0,
